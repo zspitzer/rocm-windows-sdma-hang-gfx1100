@@ -2,6 +2,8 @@
 
 First compute submission after an SDMA host-to-device copy into recently freed memory, with the pinned source tensors freed straight after (torch records a stream event for each), never signals its fence. Windows 11, RX 7900 XT (gfx1100), HIP runtime from the TheRock `rocm-sdk 10.1` nightly. Plain PyTorch reproduces it. `PAL_DISABLE_SDMA=1` cures it.
 
+Filed as [ROCm/rocm-systems#12535](https://github.com/ROCm/rocm-systems/issues/12535).
+
 **The ask:** this looks like a PAL / WDDM fence or ordering bug between an SDMA copy and the next compute submission on gfx1100. The stuck queue's counters are in [`evidence/cdb/hung-start-r1-queue.txt`](evidence/cdb/hung-start-r1-queue.txt), the stacks are below.
 
 ## Run it
