@@ -13,7 +13,7 @@
 
 ## Installing the same stack
 
-`standalone.py` and `loop.py` need only torch. The wheels come from AMD's nightly index, all on one nightly stamp. This is how the venv was built (download, then install with `--no-deps` so pip does not pull a CUDA torch from PyPI):
+`standalone.py` and `loop.py` need only torch. The wheels come from AMD's nightly index, all on one nightly stamp. This is how the venv was built, in PowerShell. Everything is installed with `--no-deps` so pip cannot pull a CUDA torch from PyPI, which is why torch's pure-Python dependencies go in by hand on the last line, pinned to the versions used here:
 
 ```
 python -m venv venv
@@ -24,10 +24,10 @@ venv\Scripts\python -m pip download --index-url $env:INDEX -d wheels "rocm[libra
 venv\Scripts\python -m pip download --no-deps --index-url $env:INDEX -d wheels "torch==2.13.0+rocm$env:STAMP" "amd-torch-device-gfx1100==2.13.0+rocm$env:STAMP"
 venv\Scripts\python -m pip install (Get-ChildItem wheels\*.whl) --no-deps --force-reinstall
 venv\Scripts\python -m pip install "wheels\rocm-$env:STAMP.tar.gz" --no-deps --no-build-isolation
-venv\Scripts\python -m pip install typing_extensions sympy filelock networkx jinja2 fsspec numpy
+venv\Scripts\python -m pip install typing_extensions==4.16.0 sympy==1.14.0 filelock==4.0.6 networkx==3.7 jinja2==3.1.6 fsspec==2026.9.0 numpy==2.4.6
 ```
 
-The block is PowerShell. Everything is installed with `--no-deps` so pip cannot pull a CUDA torch from PyPI, so torch's pure-Python dependencies go in by hand on the last line (the versions here: typing_extensions 4.16.0, sympy 1.14.0, filelock 4.0.6, networkx 3.7, jinja2 3.1.6, fsspec 2026.9.0, numpy 2.4.6). The resulting packages, with the sha256 of the files installed here:
+The resulting packages, with the sha256 of the files installed here:
 
 | Package | sha256 |
 | --- | --- |
