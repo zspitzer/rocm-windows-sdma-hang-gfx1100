@@ -1,0 +1,13 @@
+== request hung >10s, capturing
+== second pass pid 47068: ~55s; .echo ==FRAME 2; .frame /c 2; dv /t /v; r; dq @rsp L20; .echo ==FRAME 3; .frame /c 3; dv /t /v; r; dq @rsp L20; .echo ==FRAME 4; .frame /c 4; dv /t /v; r; dq @rsp L20; .echo ==FRAME 5; .frame /c 5; dv /t /v; r; dq @rsp L20; .echo ==FRAME 6; .frame /c 6; dv /t /v; r; dq @rsp L20; .echo ==FRAME 7; .frame /c 7; dv /t /v; r; dq @rsp L20; .echo ==FRAME 8; .frame /c 8; dv /t /v; r; dq @rsp L20; .echo ==FRAME 9; .frame /c 9; dv /t /v; r; dq @rsp L20; q
+== third pass Queue*=0x000001db8d134c10
+== capture r1: SENDING
+ SENDING
+ SENDING
+ SENDING
+ SENDING
+ SENDING
+ SENDING
+ SENDING
+ SENDING
+ 

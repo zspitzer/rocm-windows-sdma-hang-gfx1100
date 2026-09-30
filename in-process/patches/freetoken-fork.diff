@@ -1,0 +1,446 @@
+diff --git a/python/freetoken/attention/triton.py b/python/freetoken/attention/triton.py
+index 9eed1e1..8864790 100644
+--- a/python/freetoken/attention/triton.py
++++ b/python/freetoken/attention/triton.py
+@@ -6,6 +6,8 @@ from typing import TYPE_CHECKING, List
+ import torch
+ from freetoken.core import Batch, get_global_ctx
+ 
++from freetoken.h2dtrace import T as _T  # H2D-TRACE
++from freetoken import h2dprobe  # H2D-PROBE
+ from .base import AttentionSpec, BaseAttnBackend, BaseAttnMetadata
+ from .utils import BaseCaptureData
+ 
+@@ -226,7 +228,10 @@ class TritonAttentionBackend(BaseAttnBackend):
+         cached_lens = [req.cached_len for req in reqs]
+         num_query_tokens = sum(seqlens_q)
+         is_decode = max(seqlens_q) == 1
++        _T("prepare_metadata:pre229")  # H2D-TRACE
+         prefix_lens = torch.tensor(cached_lens, dtype=torch.int32, device=device)
++        _T("prepare_metadata:post229")  # H2D-TRACE
++        h2dprobe.request_done()  # H2D-PROBE
+ 
+         indptr = torch.tensor([0] + seqlens_k, dtype=torch.int32, device=device).cumsum_(0)
+         if is_decode:
+diff --git a/python/freetoken/engine/engine.py b/python/freetoken/engine/engine.py
+index f14d370..87ac9ef 100644
+--- a/python/freetoken/engine/engine.py
++++ b/python/freetoken/engine/engine.py
+@@ -423,7 +423,7 @@ class Engine:
+             dummy_req=self.dummy_req,
+             moe_offload_cache=self.moe_offload_cache,
+         )
+-        if config.attention_backend.split(",")[0] == "triton":
++        if config.attention_backend.split(",")[0] == "triton" and not os.environ.get("FT_SKIP_WARMUP"):  # patched: FT_SKIP_WARMUP probe for the H2D wedge
+             # Prefill runs on the first comma part; warm its autotune cache.
+             self._warmup_prefill()
+ 
+diff --git a/python/freetoken/kernel/csrc/cpu_moe/cpu_moe_ext.cpp b/python/freetoken/kernel/csrc/cpu_moe/cpu_moe_ext.cpp
+index 4f0723d..4803b05 100644
+--- a/python/freetoken/kernel/csrc/cpu_moe/cpu_moe_ext.cpp
++++ b/python/freetoken/kernel/csrc/cpu_moe/cpu_moe_ext.cpp
+@@ -40,6 +40,12 @@
+ 
+ #if defined(__HIP_PLATFORM_AMD__) || defined(USE_ROCM)
+ #include <freetoken/hip_compat.cuh>
++// patched: hip_compat.cuh doesn't map these CUDA names used by the host-func fallback path
++#ifndef CUDART_CB
++#define CUDART_CB
++#endif
++#define cudaLaunchHostFunc hipLaunchHostFunc
++#define cudaStreamSynchronize hipStreamSynchronize
+ #else
+ #include <cuda_runtime_api.h>
+ #endif
+diff --git a/python/freetoken/kernel/triton/moe_align.py b/python/freetoken/kernel/triton/moe_align.py
+index 55a9374..c6ba038 100644
+--- a/python/freetoken/kernel/triton/moe_align.py
++++ b/python/freetoken/kernel/triton/moe_align.py
+@@ -45,6 +45,7 @@ the upstream (vLLM/sglang) style of hardcoding/heuristics instead of autotuning.
+ 
+ from __future__ import annotations
+ 
++import os
+ from typing import Tuple
+ 
+ import torch
+@@ -213,6 +214,44 @@ def _div_ceil(a: int, b: int) -> int:
+     return (a + b - 1) // b
+ 
+ 
++def _moe_align_block_size_torch(
++    topk_ids: torch.Tensor,
++    block_size: int,
++    num_experts: int,
++) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
++    """Pure-torch moe_align_block_size: same buffers/semantics as the triton kernels
++    below, no host syncs. Used on ROCm, where the triton histogram/cumsum/atomic
++    kernels give wrong expert_ids / totals on RDNA3 (gfx1100)."""
++    device = topk_ids.device
++    numel = topk_ids.numel()
++    effective_E = num_experts + 1
++    if numel < effective_E:
++        max_num_tokens_padded = numel * block_size
++    else:
++        max_num_tokens_padded = numel + effective_E * (block_size - 1)
++    max_num_m_blocks = _div_ceil(max_num_tokens_padded, block_size)
++
++    flat = topk_ids.reshape(-1).long()
++    counts = torch.zeros(effective_E, dtype=torch.long, device=device)
++    counts.scatter_add_(0, flat, torch.ones_like(flat))
++    nblk = (counts + block_size - 1) // block_size
++    excl_blk = torch.cumsum(nblk, 0) - nblk
++    num_tokens_post_pad = (nblk.sum() * block_size).to(torch.int32).reshape(1)
++
++    # expert owning block b = largest e with excl_blk[e] <= b (blocks past the total are never read)
++    b = torch.arange(max_num_m_blocks, device=device)
++    expert_ids = (torch.searchsorted(excl_blk, b, right=True) - 1).to(torch.int32)
++
++    order = torch.argsort(flat, stable=True)
++    sorted_e = flat[order]
++    start = torch.cumsum(counts, 0) - counts
++    rank = torch.arange(numel, device=device) - start[sorted_e]
++    pos = excl_blk[sorted_e] * block_size + rank
++    sorted_token_ids = torch.full((max_num_tokens_padded,), numel, dtype=torch.int32, device=device)
++    sorted_token_ids[pos] = order.to(torch.int32)
++    return sorted_token_ids, expert_ids, num_tokens_post_pad
++
++
+ def moe_align_block_size(
+     topk_ids: torch.Tensor,
+     block_size: int,
+@@ -220,6 +259,8 @@ def moe_align_block_size(
+ ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+     assert topk_ids.dtype == torch.int32
+     assert topk_ids.is_contiguous()
++    if torch.version.hip is not None and os.environ.get("FT_MOE_ALIGN_TRITON") != "1":
++        return _moe_align_block_size_torch(topk_ids, block_size, num_experts)
+     device = topk_ids.device
+     numel = topk_ids.numel()
+     effective_E = num_experts + 1  # mirrors fused.py's num_experts+1 convention
+diff --git a/python/freetoken/kernel/utils.py b/python/freetoken/kernel/utils.py
+index afd8a98..fb6d158 100644
+--- a/python/freetoken/kernel/utils.py
++++ b/python/freetoken/kernel/utils.py
+@@ -53,8 +53,7 @@ def _is_rocm_build() -> bool:
+ 
+ DEFAULT_CUDA_CFLAGS = (
+     ["-std=c++20", "-O3"]
+-    if _is_hip_toolchain()
+-    if _is_rocm_build()
++    if _is_hip_toolchain() or _is_rocm_build()
+     else ["-std=c++20", "-O3", "--expt-relaxed-constexpr"]
+ )
+ DEFAULT_LDFLAGS = []
+diff --git a/python/freetoken/scheduler/cache.py b/python/freetoken/scheduler/cache.py
+index 9be235b..e33aabd 100644
+--- a/python/freetoken/scheduler/cache.py
++++ b/python/freetoken/scheduler/cache.py
+@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, List, Tuple
+ 
+ import torch
+ from freetoken.core import Req
++from freetoken import h2dprobe  # H2D-PROBE
+ from freetoken.kvcache import BaseCacheHandle, MatchResult, create_prefix_cache
+ from freetoken.utils import align_down, div_ceil
+ 
+@@ -664,4 +665,7 @@ def _write_page_table(
+     assert allocated.dtype == page_table.dtype, (
+         f"allocated dtype {allocated.dtype} != page_table dtype {page_table.dtype}"
+     )
+-    page_table[table_idxs, offsets] = allocated
++    h2dprobe.before_consumer( table_idxs, offsets, table_idx_host, positions_host, page_table )  # H2D-PROBE
++    if not h2dprobe.consumer( page_table, table_idxs, offsets, allocated ):  # H2D-PROBE
++        page_table[table_idxs, offsets] = allocated
++    h2dprobe.after_consumer()  # H2D-PROBE
+diff --git a/python/freetoken/scheduler/prefill.py b/python/freetoken/scheduler/prefill.py
+index be84874..b3be5ee 100644
+--- a/python/freetoken/scheduler/prefill.py
++++ b/python/freetoken/scheduler/prefill.py
+@@ -7,6 +7,7 @@ import torch
+ from freetoken.core import Batch, Req
+ from freetoken.utils import align_down, div_ceil, init_logger
+ 
++from freetoken.h2dtrace import T as _T  # H2D-TRACE
+ from .utils import PendingReq
+ 
+ if TYPE_CHECKING:
+@@ -164,6 +165,7 @@ class PrefillAdder:
+         _slice = slice(cached_len, cached_len + chunk_size)
+         device_ids = self.table_manager.token_pool[table_idx, _slice]
+         device_ids.copy_(_maybe_pinned(pending_req.input_ids[_slice]), non_blocking=True)
++        _T("token_pool_copy")  # H2D-TRACE
+         if is_chunked and pending_req.mm_embeds is not None:
+             raise NotImplementedError(
+                 "Multimodal prompts must fit in a single prefill chunk; increase "
+diff --git a/python/freetoken/scheduler/scheduler.py b/python/freetoken/scheduler/scheduler.py
+index 3554116..2c88d2b 100644
+--- a/python/freetoken/scheduler/scheduler.py
++++ b/python/freetoken/scheduler/scheduler.py
+@@ -25,6 +25,7 @@ from freetoken.utils import (
+     load_toolcall_anchor_id,
+ )
+ 
++from freetoken.h2dtrace import T as _T  # H2D-TRACE
+ from .cache import CacheManager
+ from .config import SchedulerConfig
+ from .decode import DecodeManager
+@@ -757,6 +758,7 @@ class Scheduler(SchedulerIOMixin):
+             logger.warning(f"could not log cache geometry: {e!r}")
+ 
+     def _prepare_batch(self, batch: Batch) -> ForwardInput:
++        _T("prepare_batch:start")  # H2D-TRACE
+         self.engine.graph_runner.pad_batch(batch)
+         self._forward_iter += 1
+         if batch.is_decode:
+@@ -775,12 +777,17 @@ class Scheduler(SchedulerIOMixin):
+         # Polymorphic page allocation: DSV4 allocates window pages + cmp/idx blocks into its
+         # slot maps; the generic manager allocates KV pages into the page table.
+         self.cache_manager.allocate_paged(batch.reqs)
++        _T("allocate_paged")  # H2D-TRACE
+         if batch.is_prefill:
+             self._gather_multimodal(batch)
+         batch.positions = _make_positions(batch, self.device)
++        _T("make_positions")  # H2D-TRACE
+         input_mapping = _make_input_tuple(batch, self.device)
++        _T("make_input_tuple")  # H2D-TRACE
+         write_mapping = _make_write_tuple(batch, self.device)
++        _T("make_write_tuple")  # H2D-TRACE
+         batch.out_loc = self.engine.page_table[input_mapping]
++        _T("page_table_index")  # H2D-TRACE
+         if self.engine.linear_state_pool is not None:
+             if batch.is_decode:
+                 # GPU GDN-state slot (one per padded request) for the decode gather/scatter;
+diff --git a/python/freetoken/h2dtrace.py b/python/freetoken/h2dtrace.py
+new file mode 100644
+index 0000000..2acd919
+--- /dev/null
++++ b/python/freetoken/h2dtrace.py
+@@ -0,0 +1,19 @@
++# TEMPORARY spike instrumentation (H2D wedge). Remove with the "H2D-TRACE" lines.
++import os
++import sys
++import time
++
++import torch
++
++ON = os.environ.get("FT_H2D_TRACE") == "1"
++ONLY = [t for t in os.environ.get("FT_H2D_TRACE_ONLY", "").split(",") if t]
++
++
++def T(tag: str) -> None:
++	if not ON:
++		return
++	if ONLY and tag not in ONLY:
++		return
++	print(f"[h2d-trace {time.time():.3f}] before-sync {tag}", file=sys.stderr, flush=True)
++	torch.cuda.synchronize()
++	print(f"[h2d-trace {time.time():.3f}] ok {tag}", file=sys.stderr, flush=True)
+diff --git a/python/freetoken/h2dprobe.py b/python/freetoken/h2dprobe.py
+new file mode 100644
+index 0000000..f53f8f9
+--- /dev/null
++++ b/python/freetoken/h2dprobe.py
+@@ -0,0 +1,202 @@
++# TEMPORARY spike instrumentation (H2D wedge read-back probe). Remove with the "H2D-PROBE" lines.
++import os
++import sys
++import threading
++import time
++
++import torch
++
++ON = os.environ.get("FT_H2D_PROBE") == "1"
++MARKS_ONLY = os.environ.get("FT_H2D_PROBE_MARKS_ONLY") == "1"
++CONSUMER = os.environ.get("FT_H2D_PROBE_CONSUMER", "indexput")
++# full: mirrors + 3 pinned marks (or marks only). devmark: one Triton mark into a DEVICE tensor before index_put.
++# torchfill: one torch fill_ on an unrelated device tensor before index_put. after: one pinned mark AFTER index_put only.
++MODE = os.environ.get("FT_H2D_PROBE_MODE", "full")
++
++if ON:
++	import triton
++	import triton.language as tl
++
++	@triton.jit
++	def _mark_kernel(dst_addr, slot, value):
++		dst_ptr = tl.cast(dst_addr, tl.pointer_type(tl.int64))
++		tl.store(dst_ptr + slot, value)
++
++	@triton.jit
++	def _mirror_kernel(src_ptr, dst_addr, n, BLOCK: tl.constexpr):
++		pid = tl.program_id(0)
++		offs = pid * BLOCK + tl.arange(0, BLOCK)
++		mask = offs < n
++		dst_ptr = tl.cast(dst_addr, tl.pointer_type(tl.int64))
++		v = tl.load(src_ptr + offs, mask=mask, other=0)
++		tl.store(dst_ptr + offs, v, mask=mask)
++
++	@triton.jit
++	def _scatter_kernel(table_ptr, idx_ptr, off_ptr, val_ptr, row_stride, n, BLOCK: tl.constexpr):
++		pid = tl.program_id(0)
++		offs = pid * BLOCK + tl.arange(0, BLOCK)
++		mask = offs < n
++		row = tl.load(idx_ptr + offs, mask=mask, other=0)
++		col = tl.load(off_ptr + offs, mask=mask, other=0)
++		val = tl.load(val_ptr + offs, mask=mask, other=0)
++		tl.store(table_ptr + row * row_stride + col, val, mask=mask)
++
++
++def _log(msg: str) -> None:
++	print(f"[h2d-probe {time.time():.3f}] {msg}", file=sys.stderr, flush=True)
++
++
++class _Probe:
++	def __init__(self) -> None:
++		from freetoken.kernel.pinned import device_ptr
++
++		self.device_ptr = device_ptr
++		self.lock = threading.Lock()
++		self.seq = 0
++		self.armed_at = 0.0
++		self.n = 0
++		self.cap = 0
++		self.mirror_a = None
++		self.mirror_b = None
++		self.marks = torch.zeros(4, dtype=torch.int64, pin_memory=True)
++		self.marks_dev = device_ptr(self.marks)
++		self.expected_a = None
++		self.expected_b = None
++		self.table_shape = None
++		self.reported = 0.0
++		self.dev_marks = torch.zeros(4, dtype=torch.int64, device="cuda")
++		self.dev_dummy = torch.zeros(4, dtype=torch.int64, device="cuda")
++		_log(f"marks data_ptr=0x{self.marks.data_ptr():x} device_ptr=0x{self.marks_dev:x} dev_marks=0x{self.dev_marks.data_ptr():x} consumer={CONSUMER} marks_only={MARKS_ONLY} mode={MODE}")
++		threading.Thread(target=self._watchdog, name="h2d-probe-watchdog", daemon=True).start()
++
++	def _grow(self, n: int) -> None:
++		if n <= self.cap:
++			return
++		self.cap = max(n, 2 * self.cap, 1024)
++		self.mirror_a = torch.full((self.cap,), -1, dtype=torch.int64, pin_memory=True)
++		self.mirror_b = torch.full((self.cap,), -1, dtype=torch.int64, pin_memory=True)
++		self.mirror_a_dev = self.device_ptr(self.mirror_a)
++		self.mirror_b_dev = self.device_ptr(self.mirror_b)
++		_log(f"mirrors cap={self.cap} a data_ptr=0x{self.mirror_a.data_ptr():x} device_ptr=0x{self.mirror_a_dev:x} b data_ptr=0x{self.mirror_b.data_ptr():x} device_ptr=0x{self.mirror_b_dev:x}")
++
++	def _mark(self, slot: int) -> None:
++		_mark_kernel[(1,)](self.marks_dev, slot, self.seq)
++
++	def before_consumer(self, table_idxs, offsets, table_idx_host, positions_host, page_table) -> None:
++		n = table_idxs.numel()
++		with self.lock:
++			self.seq += 1
++			self.n = n
++			self.expected_a = table_idx_host
++			self.expected_b = positions_host
++			self.table_shape = tuple(page_table.shape)
++			self.marks.zero_()
++			self._grow(n)
++			self.mirror_a[:n].fill_(-1)
++			self.mirror_b[:n].fill_(-1)
++			self.armed_at = time.time()
++			self.reported = 0.0
++		if MODE == "devmark":
++			_mark_kernel[(1,)](self.dev_marks.data_ptr(), 0, self.seq)
++			return
++		if MODE == "torchfill":
++			self.dev_dummy.fill_(self.seq)
++			return
++		if MODE == "after":
++			return
++		assert MODE == "full", MODE
++		self._mark(0)
++		if not MARKS_ONLY:
++			grid = (triton.cdiv(n, 1024),)
++			_mirror_kernel[grid](table_idxs, self.mirror_a_dev, n, BLOCK=1024)
++			_mirror_kernel[grid](offsets, self.mirror_b_dev, n, BLOCK=1024)
++		self._mark(1)
++
++	def consumer(self, page_table, table_idxs, offsets, allocated) -> bool:
++		if CONSUMER == "indexput":
++			return False
++		if CONSUMER == "scatter":
++			page_table.view(-1).scatter_(0, table_idxs * page_table.shape[1] + offsets, allocated)
++			return True
++		if CONSUMER == "triton":
++			n = table_idxs.numel()
++			_scatter_kernel[(triton.cdiv(n, 1024),)](page_table, table_idxs, offsets, allocated, page_table.stride(0), n, BLOCK=1024)
++			return True
++		raise ValueError(f"FT_H2D_PROBE_CONSUMER={CONSUMER!r}")
++
++	def after_consumer(self) -> None:
++		if MODE in ("devmark", "torchfill"):
++			return
++		self._mark(2)
++
++	def request_done(self) -> None:
++		with self.lock:
++			self.marks[3] = self.seq
++			seq, n = self.seq, self.n
++		if MODE != "full":
++			_log(f"seq={seq} done mode={MODE} marks={self.marks[:3].tolist()} dev_marks={self.dev_marks.tolist()} dev_dummy={self.dev_dummy.tolist()} n={n}")
++			return
++		if not MARKS_ONLY:
++			mm_a = int((self.mirror_a[:n] != self.expected_a).sum())
++			mm_b = int((self.mirror_b[:n] != self.expected_b).sum())
++		else:
++			mm_a = mm_b = -1
++		_log(f"seq={seq} done marks={self.marks[:3].tolist()} n={n} mismatches a/b={mm_a}/{mm_b}")
++
++	def _report(self, every: bool) -> None:
++		with self.lock:
++			seq, n = self.seq, self.n
++			ea, eb, shape = self.expected_a, self.expected_b, self.table_shape
++		marks = self.marks.tolist()
++		_log(f"WATCHDOG seq={seq} armed {time.time() - self.armed_at:.0f}s ago, request not done. marks(reached,mirrors,indexput,done)={marks} n={n} page_table.shape={shape}")
++		if MARKS_ONLY or MODE != "full":
++			return
++		for name, seen, exp in (("a/table_idxs", self.mirror_a[:n], ea), ("b/offsets", self.mirror_b[:n], eb)):
++			bad = (seen != exp).nonzero().flatten()
++			_log(f"  {name}: mismatches={bad.numel()} seen min..max={int(seen.min())}..{int(seen.max())} expected min..max={int(exp.min())}..{int(exp.max())}")
++			for i in bad[:8].tolist():
++				_log(f"    [{i}] expected={int(exp[i])} seen={int(seen[i])}")
++		_log(f"  addrs: marks=0x{self.marks_dev:x} a=0x{self.mirror_a_dev:x} b=0x{self.mirror_b_dev:x} (dq <addr> L<n> in cdb)")
++
++	def _watchdog(self) -> None:
++		while True:
++			time.sleep(5)
++			if self.armed_at == 0.0 or int(self.marks[3]) == self.seq:
++				continue
++			age = time.time() - self.armed_at
++			if age < 30:
++				continue
++			if self.reported == 0.0 or time.time() - self.reported >= 60:
++				self.reported = time.time()
++				self._report(True)
++
++
++_probe = None
++
++
++def _get() -> _Probe:
++	global _probe
++	if _probe is None:
++		_probe = _Probe()
++	return _probe
++
++
++def before_consumer(table_idxs, offsets, table_idx_host, positions_host, page_table) -> None:
++	if ON:
++		_get().before_consumer(table_idxs, offsets, table_idx_host, positions_host, page_table)
++
++
++def consumer(page_table, table_idxs, offsets, allocated) -> bool:
++	if not ON:
++		return False
++	return _get().consumer(page_table, table_idxs, offsets, allocated)
++
++
++def after_consumer() -> None:
++	if ON:
++		_get().after_consumer()
++
++
++def request_done() -> None:
++	if ON and _probe is not None:
++		_probe.request_done()

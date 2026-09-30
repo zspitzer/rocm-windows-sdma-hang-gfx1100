@@ -1,0 +1,24 @@
+Experiment patch, not a proposed fix yet. Applies to rocm-systems at tag hip-version_10.1.62330
+(the wheel pin). Adds the CopyToKernel acquire on the main engine after an SDMA buffer copy,
+mirroring what the CP DMA branch already emits at the end of Resource::partialMemCopyTo.
+Rebuild amdhip64_7.dll with PDB, then run six fresh starts, workaround off.
+
+Apply from the rocm-systems checkout root:  git apply --check clr-sdma-acquire.patch
+
+--- a/projects/clr/rocclr/device/pal/palresource.cpp
++++ b/projects/clr/rocclr/device/pal/palresource.cpp
+@@ -1690,6 +1690,14 @@ bool Resource::partialMemCopyTo(VirtualGPU& gpu, const amd::Coord3D& srcOrigin,
+   // Restore the original engine
+   gpu.engineID_ = activeEngineID;
+
++  if (!cp_dma && (activeEngineID == MainEngine)) {
++    // EXPERIMENT: the SDMA branch has no CopyToKernel acquire, unlike the CP DMA branch above.
++    // The next compute submit only does a CPU-side WaitForIdleSdma(), which orders the work but
++    // does not invalidate the compute caches for the range SDMA just wrote. Emit the same acquire
++    // on the main engine so the consumer kernel cannot read stale lines.
++    gpu.addBarrier(RgpSqqtBarrierReason::MemDependency, BarrierType::CopyToKernel);
++  }
++
+   return true;
+ }
+

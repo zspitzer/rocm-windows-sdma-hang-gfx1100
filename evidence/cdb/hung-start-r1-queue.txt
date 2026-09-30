@@ -1,0 +1,250 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.015 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.8249 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\tr\b\core\clr\build\hipamd\src
+Deferred                                       srv*<symcache>*https://msdl.microsoft.com/download/symbols
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\tr\b\core\clr\build\hipamd\src
+Deferred                                       srv*<symcache>*https://msdl.microsoft.com/download/symbols
+Symbol search path is: C:\tr\b\core\clr\build\hipamd\src;srv*<symcache>*https://msdl.microsoft.com/download/symbols
+Executable search path is: 
+WARNING: Process 47068 is not attached as a debuggee
+         The process can be examined but debug events will not be received
+................................................................
+................................................................
+............................
+Loading unloaded module list
+........
+(b7dc.b628): Wake debugger - code 80000007 (first chance)
+
++------------------------------------------------------------------------+
+| This target supports Hardware-enforced Stack Protection. A HW based    |
+| "Shadow Stack" may be available to assist in debugging and analysis.   |
+| See aka.ms/userhsp for more info.                                      |
+|                                                                        |
+| dps @ssp                                                               |
+|                                                                        |
++------------------------------------------------------------------------+
+
+ntdll!NtQueryInformationThread+0x14:
+00007ffb`a4f61264 c3              ret
+0:000> cdb: Reading initial command 'dt -r1 amdhip64_7!amd::pal::VirtualGPU::Queue 0x000001db8d134c10; dx -r3 ((amdhip64_7!amd::pal::VirtualGPU::Queue*)0x000001db8d134c10)->gpu_.events_; dx -r2 ((amdhip64_7!amd::pal::VirtualGPU::Queue*)0x000001db8d134c10)->gpu_.queues_; dx ((amdhip64_7!amd::pal::VirtualGPU::Queue*)0x000001db8d134c10)->cmdBufIdSlot_; dx ((amdhip64_7!amd::pal::VirtualGPU::Queue*)0x000001db8d134c10)->cmdBufIdCurrent_; dx ((amdhip64_7!amd::pal::VirtualGPU::Queue*)0x000001db8d134c10)->cmbBufIdRetired_; q'
+*** WARNING: Unable to verify checksum for C:\tr\venv-hip\Lib\site-packages\_rocm_sdk_core\bin\amdhip64_7.dll
+   +0x000 lock_            : 0x000001d6`a4205e00 std::recursive_mutex
+      +0x000 _Mtx_storage     : _Mtx_internal_imp_t
+   +0x008 iQueue_          : 0x000001d6`a4252770 Pal::IQueue
+      +0x000 __VFN_table : 0x00007ffa`f065e130 
+      +0x008 m_pClientData    : (null) 
+   +0x010 iCmdBuffs_       : std::vector<Pal::ICmdBuffer *,std::allocator<Pal::ICmdBuffer *> >
+      +0x000 _Mypair          : std::_Compressed_pair<std::allocator<Pal::ICmdBuffer *>,std::_Vector_val<std::_Simple_types<Pal::ICmdBuffer *> >,1>
+   +0x028 iCmdFences_      : std::vector<Pal::IFence *,std::allocator<Pal::IFence *> >
+      +0x000 _Mypair          : std::_Compressed_pair<std::allocator<Pal::IFence *>,std::_Vector_val<std::_Simple_types<Pal::IFence *> >,1>
+   +0x040 last_kernel_     : 0x000001db`8ca39e80 amd::Kernel
+      +0x000 __VFN_table : 0x00007ffa`f05a5098 
+      +0x008 referenceCount_  : std::atomic<unsigned int>
+      =00007ffa`f0e0cdc0 icdVendorDispatch_ : [0] _cl_icd_dispatch
+      +0x010 dispatch_        : 0x00007ffa`f0e0cdc0 _cl_icd_dispatch
+      +0x018 program_         : amd::SharedReference<amd::Program>
+      +0x020 symbol_          : 0x000001d6`b4226a40 amd::Symbol
+      +0x028 name_            : std::basic_string<char,std::char_traits<char>,std::allocator<char> >
+      +0x048 parameters_      : 0x000001db`80270a50 amd::KernelParameters
+      =00007ffa`f05a6700 kArgFieldMap     : [0] amd::Kernel::ArgFieldMapType
+      =00007ffa`f05a67e0 kArgValueKind    : [0] amd::Kernel::ArgValueKindType
+      =00007ffa`f05a68e0 kArgAccQual      : [0] amd::Kernel::ArgAccQualType
+      =00007ffa`f05a6920 kArgAddrSpaceQual : [0] amd::Kernel::ArgAddrSpaceQualType
+      =00007ffa`f05a6980 kAttrFieldMap    : [0] amd::Kernel::AttrFieldMapType
+      =00007ffa`f05a69c0 kCodePropFieldMap : [0] amd::Kernel::CodePropFieldMapType
+      =00007ffa`f05a6a80 kArgAccQualV3    : [0] amd::Kernel::ArgAccQualV3Type
+      =00007ffa`f05a6ac0 kArgAddrSpaceQualV3 : [0] amd::Kernel::ArgAddrSpaceQualV3Type
+      =00007ffa`f05a6b20 kKernelFieldMapV3 : [0] amd::Kernel::KernelFieldMapV3Type
+      =00007ffa`f05a6c50 kArgValueKindV3  : [0] amd::Kernel::ArgValueKindV3Type
+      =00007ffa`f05a6e40 kArgFieldMapV3   : [0] amd::Kernel::ArgFieldMapV3Type
+   +0x048 aql_mgmt_        : 0x000001d6`a4205e70 amd::pal::AqlPacketMgmt
+      +0x000 amd_queue_       : amd_queue_v2_s
+      +0x900 aql_packets_     : [4096] hsa_kernel_dispatch_packet_s
+      +0x40900 aql_events_      : [4096] GpuEvent
+      +0x44900 aql_vgpus_       : [4096] 0x000001db`8343aa40 amd::pal::VirtualGPU
+   +0x050 info_            : (null) 
+   +0x058 gpu_             : 0x000001db`8343aa40 amd::pal::VirtualGPU
+      +0x000 __VFN_table : 0x00007ffa`f05b7720 
+      +0x008 referenceCount_  : std::atomic<unsigned int>
+      +0x010 device_          : amd::SharedReference<amd::Device>
+      +0x018 blitMgr_         : 0x000001d6`b53eef80 amd::device::BlitManager
+      +0x020 execution_       : std::recursive_mutex
+      +0x070 index_           : 4
+      +0x078 queued_async_handlers_ : std::atomic<unsigned __int64>
+      +0x080 engineID_        : 0 ( MainEngine )
+      +0x088 gpuDevice_       : 0x000001d6`a0ee25e0 amd::pal::Device
+      +0x090 printfDbgHSA_    : 0x000001d6`b577bba0 amd::pal::PrintfDbgHSA
+      +0x098 tsCache_         : 0x000001db`8c6ad950 amd::pal::TimeStampCache
+      +0x0a0 memoryDependency_ : amd::pal::VirtualGPU::MemoryDependency
+      +0x0c0 pinnedMems_      : std::vector<amd::Memory *,std::allocator<amd::Memory *> >
+      +0x0d8 managedBuffer_   : amd::pal::ManagedBuffer
+      +0x110 constBufs_       : std::vector<amd::pal::ConstantBuffer *,std::allocator<amd::pal::ConstantBuffer *> >
+      +0x128 writeBuffer_     : amd::pal::XferBuffer
+      +0x2b8 cbQueue_         : std::queue<amd::pal::VirtualGPU::CommandBatch *,std::deque<amd::pal::VirtualGPU::CommandBatch *,std::allocator<amd::pal::VirtualGPU::CommandBatch *> > >
+      +0x2e0 freeCbQueue_     : std::queue<amd::pal::VirtualGPU::CommandBatch *,std::deque<amd::pal::VirtualGPU::CommandBatch *,std::allocator<amd::pal::VirtualGPU::CommandBatch *> > >
+      +0x308 hwRing_          : 0
+      +0x30c state_           : amd::pal::VirtualGPU::State
+      +0x310 events_          : [2] GpuEvent
+      +0x318 readjustTimeGPU_ : 0
+      +0x320 lastTS_          : (null) 
+      +0x328 profileTs_       : (null) 
+      +0x330 vqHeader_        : (null) 
+      +0x338 virtualQueue_    : (null) 
+      +0x340 schedParams_     : (null) 
+      +0x348 deviceQueueSize_ : 0
+      +0x34c maskGroups_      : 1
+      +0x350 hsaQueueMem_     : 0x000001db`7fdc4e00 amd::pal::Memory
+      +0x358 cmdAllocator_    : 0x000001db`805f6ac0 Pal::ICmdAllocator
+      +0x360 queues_          : [2] 0x000001db`8d134c10 amd::pal::VirtualGPU::Queue
+      +0x370 sdmaRange_       : amd::pal::VirtualGPU::MemoryRange
+      +0x380 hostcallBuffer_  : (null) 
+   +0x060 iDev_            : 0x000001d6`a5870ea8 Pal::IDevice
+      +0x000 __VFN_table : 0x00007ffa`f0625590 
+      +0x008 m_pfnTable       : Pal::DeviceInterfacePfnTable
+      +0x048 m_pClientData    : (null) 
+   +0x068 cmdBufIdSlot_    : 3
+   +0x06c cmdBufIdCurrent_ : 0xf
+   +0x070 cmbBufIdRetired_ : 8
+   +0x074 cmdCnt_          : 5
+   +0x078 memReferences_   : std::unordered_map<amd::pal::GpuMemoryReference *,unsigned int,std::hash<amd::pal::GpuMemoryReference *>,std::equal_to<amd::pal::GpuMemoryReference *>,std::allocator<std::pair<amd::pal::GpuMemoryReference * const,unsigned int> > >
+      +0x000 _Traitsobj       : std::_Umap_traits<amd::pal::GpuMemoryReference *,unsigned int,std::_Uhash_compare<amd::pal::GpuMemoryReference *,std::hash<amd::pal::GpuMemoryReference *>,std::equal_to<amd::pal::GpuMemoryReference *> >,std::allocator<std::pair<amd::pal::GpuMemoryReference * const,unsigned int> >,0>
+      +0x008 _List            : std::list<std::pair<amd::pal::GpuMemoryReference * const,unsigned int>,std::allocator<std::pair<amd::pal::GpuMemoryReference * const,unsigned int> > >
+      +0x018 _Vec             : std::_Hash_vec<std::allocator<std::_List_unchecked_iterator<std::_List_val<std::_List_simple_types<std::pair<amd::pal::GpuMemoryReference * const,unsigned int> > > > > >
+      +0x030 _Mask            : 7
+      +0x038 _Maxidx          : 8
+   +0x0b8 vlAlloc_         : Util::VirtualLinearAllocator
+      +0x000 __VFN_table : 0x00007ffa`f05b76f8 
+      +0x008 m_pStart         : 0x000001db`7f720000 Void
+      +0x010 m_pCurrent       : 0x000001db`7f720000 Void
+      +0x018 m_pCommittedToPage : 0x000001db`7f721000 Void
+      +0x020 m_size           : 0x10000
+      +0x028 m_pageSize       : 0x1000
+   +0x0e8 palMemRefs_      : std::vector<Pal::GpuMemoryRef,std::allocator<Pal::GpuMemoryRef> >
+      +0x000 _Mypair          : std::_Compressed_pair<std::allocator<Pal::GpuMemoryRef>,std::_Vector_val<std::_Simple_types<Pal::GpuMemoryRef> >,1>
+   +0x100 palMems_         : std::vector<Pal::IGpuMemory *,std::allocator<Pal::IGpuMemory *> >
+      +0x000 _Mypair          : std::_Compressed_pair<std::allocator<Pal::IGpuMemory *>,std::_Vector_val<std::_Simple_types<Pal::IGpuMemory *> >,1>
+   +0x118 palDoppRefs_     : std::vector<Pal::DoppRef,std::allocator<Pal::DoppRef> >
+      +0x000 _Mypair          : std::_Compressed_pair<std::allocator<Pal::DoppRef>,std::_Vector_val<std::_Simple_types<Pal::DoppRef> >,1>
+   +0x130 sdiReferences_   : std::set<Pal::IGpuMemory *,std::less<Pal::IGpuMemory *>,std::allocator<Pal::IGpuMemory *> >
+      +0x000 _Mypair          : std::_Compressed_pair<std::less<Pal::IGpuMemory *>,std::_Compressed_pair<std::allocator<std::_Tree_node<Pal::IGpuMemory *,void *> >,std::_Tree_val<std::_Tree_simple_types<Pal::IGpuMemory *> >,1>,1>
+   +0x140 palSdiRefs_      : std::vector<Pal::IGpuMemory const *,std::allocator<Pal::IGpuMemory const *> >
+      +0x000 _Mypair          : std::_Compressed_pair<std::allocator<Pal::IGpuMemory const *>,std::_Vector_val<std::_Simple_types<Pal::IGpuMemory const *> >,1>
+   +0x158 residency_size_  : 0
+   +0x160 residency_limit_ : 0x00000001`3fc00000
+   +0x168 max_command_buffers_ : 0xc
+((amdhip64_7!amd::pal::VirtualGPU::Queue*)0x000001db8d134c10)->gpu_.events_ [Type: GpuEvent [2]]
+    [0]              [Type: GpuEvent]
+        InvalidID        : 0x3fffffff [Type: unsigned int]
+        [+0x000 (29: 0)] id_              : 0xf [Type: unsigned int]
+        [+0x000 (30:30)] modified_        : 0x0 [Type: unsigned int]
+        [+0x000 (31:31)] engineId_        : 0x0 [Type: unsigned int]
+    [1]              [Type: GpuEvent]
+        InvalidID        : 0x3fffffff [Type: unsigned int]
+        [+0x000 (29: 0)] id_              : 0x3fffffff [Type: unsigned int]
+        [+0x000 (30:30)] modified_        : 0x0 [Type: unsigned int]
+        [+0x000 (31:31)] engineId_        : 0x1 [Type: unsigned int]
+((amdhip64_7!amd::pal::VirtualGPU::Queue*)0x000001db8d134c10)->gpu_.queues_ [Type: amd::pal::VirtualGPU::Queue * [2]]
+    [0]              : 0x1db8d134c10 [Type: amd::pal::VirtualGPU::Queue *]
+        MaxCommands      : 0x100 [Type: unsigned int]
+        StartCmdBufIdx   : 0x1 [Type: unsigned int]
+        FirstMemoryReference : 0x80000000 [Type: unsigned int]
+        WaitTimeoutInNsec : 0x165a0bc00 [Type: unsigned __int64]
+        PollIntervalInNsec : 0x30d40 [Type: unsigned __int64]
+        [+0x000] lock_            : 0x1d6a4205e00 : locked [Type: std::recursive_mutex *]
+        [+0x008] iQueue_          : 0x1d6a4252770 [Type: Pal::IQueue *]
+        [+0x010] iCmdBuffs_       : { size=0xc } [Type: std::vector<Pal::ICmdBuffer *,std::allocator<Pal::ICmdBuffer *> >]
+        [+0x028] iCmdFences_      : { size=0xc } [Type: std::vector<Pal::IFence *,std::allocator<Pal::IFence *> >]
+        [+0x040] last_kernel_     : 0x1db8ca39e80 [Type: amd::Kernel *]
+        [+0x048] aql_mgmt_        : 0x1d6a4205e70 [Type: amd::pal::AqlPacketMgmt *]
+        [+0x050] info_            : 0x0 [Type: void *]
+        [+0x058] gpu_             : 0x1db8343aa40 [Type: amd::pal::VirtualGPU &]
+        [+0x060] iDev_            : 0x1d6a5870ea8 [Type: Pal::IDevice *]
+        [+0x068] cmdBufIdSlot_    : 0x3 [Type: unsigned int]
+        [+0x06c] cmdBufIdCurrent_ : 0xf [Type: unsigned int]
+        [+0x070] cmbBufIdRetired_ : 0x8 [Type: unsigned int]
+        [+0x074] cmdCnt_          : 0x5 [Type: unsigned int]
+        [+0x078] memReferences_   : { size=0x0 } [Type: std::unordered_map<amd::pal::GpuMemoryReference *,unsigned int,std::hash<amd::pal::GpuMemoryReference *>,std::equal_to<amd::pal::GpuMemoryReference *>,std::allocator<std::pair<amd::pal::GpuMemoryReference * const,unsigned int> > >]
+        [+0x0b8] vlAlloc_         [Type: Util::VirtualLinearAllocator]
+        [+0x0e8] palMemRefs_      : { size=0x0 } [Type: std::vector<Pal::GpuMemoryRef,std::allocator<Pal::GpuMemoryRef> >]
+        [+0x100] palMems_         : { size=0x0 } [Type: std::vector<Pal::IGpuMemory *,std::allocator<Pal::IGpuMemory *> >]
+        [+0x118] palDoppRefs_     : { size=0x0 } [Type: std::vector<Pal::DoppRef,std::allocator<Pal::DoppRef> >]
+        [+0x130] sdiReferences_   : { size=0x0 } [Type: std::set<Pal::IGpuMemory *,std::less<Pal::IGpuMemory *>,std::allocator<Pal::IGpuMemory *> >]
+        [+0x140] palSdiRefs_      : { size=0x0 } [Type: std::vector<Pal::IGpuMemory const *,std::allocator<Pal::IGpuMemory const *> >]
+        [+0x158] residency_size_  : 0x0 [Type: unsigned __int64]
+        [+0x160] residency_limit_ : 0x13fc00000 [Type: unsigned __int64]
+        [+0x168] max_command_buffers_ : 0xc [Type: unsigned int]
+    [1]              : 0x1db8c9e80e0 [Type: amd::pal::VirtualGPU::Queue *]
+        MaxCommands      : 0x100 [Type: unsigned int]
+        StartCmdBufIdx   : 0x1 [Type: unsigned int]
+        FirstMemoryReference : 0x80000000 [Type: unsigned int]
+        WaitTimeoutInNsec : 0x165a0bc00 [Type: unsigned __int64]
+        PollIntervalInNsec : 0x30d40 [Type: unsigned __int64]
+        [+0x000] lock_            : 0x1d6a425a930 : unlocked [Type: std::recursive_mutex *]
+        [+0x008] iQueue_          : 0x1d6a42a72a0 [Type: Pal::IQueue *]
+        [+0x010] iCmdBuffs_       : { size=0xc } [Type: std::vector<Pal::ICmdBuffer *,std::allocator<Pal::ICmdBuffer *> >]
+        [+0x028] iCmdFences_      : { size=0xc } [Type: std::vector<Pal::IFence *,std::allocator<Pal::IFence *> >]
+        [+0x040] last_kernel_     : 0x0 [Type: amd::Kernel *]
+        [+0x048] aql_mgmt_        : 0x1d6a425a9a0 [Type: amd::pal::AqlPacketMgmt *]
+        [+0x050] info_            : 0x0 [Type: void *]
+        [+0x058] gpu_             : 0x1db8343aa40 [Type: amd::pal::VirtualGPU &]
+        [+0x060] iDev_            : 0x1d6a5870ea8 [Type: Pal::IDevice *]
+        [+0x068] cmdBufIdSlot_    : 0x5 [Type: unsigned int]
+        [+0x06c] cmdBufIdCurrent_ : 0x5 [Type: unsigned int]
+        [+0x070] cmbBufIdRetired_ : 0x4 [Type: unsigned int]
+        [+0x074] cmdCnt_          : 0x0 [Type: unsigned int]
+        [+0x078] memReferences_   : { size=0x0 } [Type: std::unordered_map<amd::pal::GpuMemoryReference *,unsigned int,std::hash<amd::pal::GpuMemoryReference *>,std::equal_to<amd::pal::GpuMemoryReference *>,std::allocator<std::pair<amd::pal::GpuMemoryReference * const,unsigned int> > >]
+        [+0x0b8] vlAlloc_         [Type: Util::VirtualLinearAllocator]
+        [+0x0e8] palMemRefs_      : { size=0x0 } [Type: std::vector<Pal::GpuMemoryRef,std::allocator<Pal::GpuMemoryRef> >]
+        [+0x100] palMems_         : { size=0x0 } [Type: std::vector<Pal::IGpuMemory *,std::allocator<Pal::IGpuMemory *> >]
+        [+0x118] palDoppRefs_     : { size=0x0 } [Type: std::vector<Pal::DoppRef,std::allocator<Pal::DoppRef> >]
+        [+0x130] sdiReferences_   : { size=0x0 } [Type: std::set<Pal::IGpuMemory *,std::less<Pal::IGpuMemory *>,std::allocator<Pal::IGpuMemory *> >]
+        [+0x140] palSdiRefs_      : { size=0x0 } [Type: std::vector<Pal::IGpuMemory const *,std::allocator<Pal::IGpuMemory const *> >]
+        [+0x158] residency_size_  : 0x0 [Type: unsigned __int64]
+        [+0x160] residency_limit_ : 0x13fc00000 [Type: unsigned __int64]
+        [+0x168] max_command_buffers_ : 0xc [Type: unsigned int]
+((amdhip64_7!amd::pal::VirtualGPU::Queue*)0x000001db8d134c10)->cmdBufIdSlot_ : 0x3 [Type: unsigned int]
+((amdhip64_7!amd::pal::VirtualGPU::Queue*)0x000001db8d134c10)->cmdBufIdCurrent_ : 0xf [Type: unsigned int]
+((amdhip64_7!amd::pal::VirtualGPU::Queue*)0x000001db8d134c10)->cmbBufIdRetired_ : 0x8 [Type: unsigned int]
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

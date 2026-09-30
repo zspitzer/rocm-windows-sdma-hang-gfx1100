@@ -1,0 +1,408 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.016 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.8249 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\tr\b\core\clr\build\hipamd\src
+Deferred                                       srv*<symcache>*https://msdl.microsoft.com/download/symbols
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\tr\b\core\clr\build\hipamd\src
+Deferred                                       srv*<symcache>*https://msdl.microsoft.com/download/symbols
+Symbol search path is: C:\tr\b\core\clr\build\hipamd\src;srv*<symcache>*https://msdl.microsoft.com/download/symbols
+Executable search path is: 
+WARNING: Process 47068 is not attached as a debuggee
+         The process can be examined but debug events will not be received
+................................................................
+................................................................
+............................
+Loading unloaded module list
+........
+(b7dc.b628): Wake debugger - code 80000007 (first chance)
+
++------------------------------------------------------------------------+
+| This target supports Hardware-enforced Stack Protection. A HW based    |
+| "Shadow Stack" may be available to assist in debugging and analysis.   |
+| See aka.ms/userhsp for more info.                                      |
+|                                                                        |
+| dps @ssp                                                               |
+|                                                                        |
++------------------------------------------------------------------------+
+
+ntdll!NtQueryInformationThread+0x14:
+00007ffb`a4f61264 c3              ret
+0:000> cdb: Reading initial command '~55s; .echo ==FRAME 2; .frame /c 2; dv /t /v; r; dq @rsp L20; .echo ==FRAME 3; .frame /c 3; dv /t /v; r; dq @rsp L20; .echo ==FRAME 4; .frame /c 4; dv /t /v; r; dq @rsp L20; .echo ==FRAME 5; .frame /c 5; dv /t /v; r; dq @rsp L20; .echo ==FRAME 6; .frame /c 6; dv /t /v; r; dq @rsp L20; .echo ==FRAME 7; .frame /c 7; dv /t /v; r; dq @rsp L20; .echo ==FRAME 8; .frame /c 8; dv /t /v; r; dq @rsp L20; .echo ==FRAME 9; .frame /c 9; dv /t /v; r; dq @rsp L20; q'
+ntdll!NtWaitForMultipleObjects+0x14:
+00007ffb`a4f61914 c3              ret
+==FRAME 2
+*** WARNING: Unable to verify checksum for C:\tr\venv-hip\Lib\site-packages\_rocm_sdk_core\bin\amdhip64_7.dll
+02 00000035`2525f340 00007ffa`eff80b04     KERNELBASE!WaitForMultipleObjects+0x11
+rax=000000000000005b rbx=0000000000000000 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=0000000000000001 rdi=0000000000000001
+rip=00007ffba2022641 rsp=000000352525f340 rbp=000014c1e316b4f8
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=000001d6acb3ef58 r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+KERNELBASE!WaitForMultipleObjects+0x11:
+00007ffb`a2022641 4883c438        add     rsp,38h
+Unable to enumerate locals, Win32 error 0n87
+Private symbols (symbols.pri) are required for locals.
+Type ".hh dbgerr005" for details.
+Last set context:
+rax=000000000000005b rbx=0000000000000000 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=0000000000000001 rdi=0000000000000001
+rip=00007ffba2022641 rsp=000000352525f340 rbp=000014c1e316b4f8
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=000001d6acb3ef58 r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+KERNELBASE!WaitForMultipleObjects+0x11:
+00007ffb`a2022641 4883c438        add     rsp,38h
+00000035`2525f340  000001d6`a4206970 00000000`00000000
+00000035`2525f350  00000000`00000000 00000000`00000001
+00000035`2525f360  000001db`00000000 00000035`2525f590
+00000035`2525f370  00000000`00000004 00007ffa`eff80b04
+00000035`2525f380  000001db`7fdc3898 000001d6`a4206970
+00000035`2525f390  00000000`00000008 00000000`00000010
+00000035`2525f3a0  00000000`00000001 00000035`2525f3b0
+00000035`2525f3b0  00000000`000011c0 00007ffa`f0337fe8
+00000035`2525f3c0  00000035`2525f679 00007ffb`a4e2670b
+00000035`2525f3d0  000001db`8343aa60 00007ffb`a201be9f
+00000035`2525f3e0  000001d6`a4205e00 00007ffb`a201be9f
+00000035`2525f3f0  000001d6`b53eef80 00007ffa`f0337e63
+00000035`2525f400  000001db`00000102 00000000`00000000
+00000035`2525f410  00000000`00000048 00000000`00000001
+00000035`2525f420  00000000`00000000 00000000`00000000
+00000035`2525f430  000001d6`a3459290 00000000`00000000
+==FRAME 3
+03 00000035`2525f380 00007ffa`eff1c846     amdhip64_7!Pal::Wddm::Fence::WaitForFences+0x164
+rax=000000000000005b rbx=0000000000000000 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=0000000000000001 rdi=0000000000000001
+rip=00007ffaeff80b04 rsp=000000352525f380 rbp=000014c1e316b4f8
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=000001d6acb3ef58 r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!Pal::Wddm::Fence::WaitForFences+0x164:
+00007ffa`eff80b04 4c8b542428      mov     r10,qword ptr [rsp+28h] ss:00000035`2525f3a8=000000352525f3b0
+Unable to enumerate locals, Win32 error 0n87
+Private symbols (symbols.pri) are required for locals.
+Type ".hh dbgerr005" for details.
+Last set context:
+rax=000000000000005b rbx=0000000000000000 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=0000000000000001 rdi=0000000000000001
+rip=00007ffaeff80b04 rsp=000000352525f380 rbp=000014c1e316b4f8
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=000001d6acb3ef58 r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!Pal::Wddm::Fence::WaitForFences+0x164:
+00007ffa`eff80b04 4c8b542428      mov     r10,qword ptr [rsp+28h] ss:00000035`2525f3a8=000000352525f3b0
+00000035`2525f380  000001db`7fdc3898 000001d6`a4206970
+00000035`2525f390  00000000`00000008 00000000`00000010
+00000035`2525f3a0  00000000`00000001 00000035`2525f3b0
+00000035`2525f3b0  00000000`000011c0 00007ffa`f0337fe8
+00000035`2525f3c0  00000035`2525f679 00007ffb`a4e2670b
+00000035`2525f3d0  000001db`8343aa60 00007ffb`a201be9f
+00000035`2525f3e0  000001d6`a4205e00 00007ffb`a201be9f
+00000035`2525f3f0  000001d6`b53eef80 00007ffa`f0337e63
+00000035`2525f400  000001db`00000102 00000000`00000000
+00000035`2525f410  00000000`00000048 00000000`00000001
+00000035`2525f420  00000000`00000000 00000000`00000000
+00000035`2525f430  000001d6`a3459290 00000000`00000000
+00000035`2525f440  00001073`3dc8d28c 00000000`00000000
+00000035`2525f450  00000000`00000048 00007ffa`ef462953
+00000035`2525f460  000001db`8d134c10 00007ffa`eff1c846
+00000035`2525f470  00000000`00000001 00007ffa`efaf6f7f
+==FRAME 4
+04 00000035`2525f470 00007ffa`efc2456f     amdhip64_7!Pal::Device::WaitForFences+0x66
+rax=000000000000005b rbx=0000000000000001 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=000001db8d134c10 rdi=00007ffaef462953
+rip=00007ffaeff1c846 rsp=000000352525f470 rbp=000014c1e316b4f8
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=0000000000000048 r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!Pal::Device::WaitForFences+0x66:
+00007ffa`eff1c846 488b7c2440      mov     rdi,qword ptr [rsp+40h] ss:00000035`2525f4b0={amdhip64_7!`string' (00007ffa`f05b7950)}
+Unable to enumerate locals, Win32 error 0n87
+Private symbols (symbols.pri) are required for locals.
+Type ".hh dbgerr005" for details.
+Last set context:
+rax=000000000000005b rbx=0000000000000001 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=000001db8d134c10 rdi=00007ffaef462953
+rip=00007ffaeff1c846 rsp=000000352525f470 rbp=000014c1e316b4f8
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=0000000000000048 r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!Pal::Device::WaitForFences+0x66:
+00007ffa`eff1c846 488b7c2440      mov     rdi,qword ptr [rsp+40h] ss:00000035`2525f4b0={amdhip64_7!`string' (00007ffa`f05b7950)}
+00000035`2525f470  00000000`00000001 00007ffa`efaf6f7f
+00000035`2525f480  00000000`00000002 000014c1`e316b4f8
+00000035`2525f490  000014c1`00000001 00000001`65a0bc00
+00000035`2525f4a0  00000000`00000002 00007ffa`efc2456f
+00000035`2525f4b0  00007ffa`f05b7950 00007ffa`efc3589e
+00000035`2525f4c0  000001db`8d140f18 000001d6`a4205e00
+00000035`2525f4d0  00000001`65a0bc00 00000000`00000009
+00000035`2525f4e0  00000000`bfffffff 00007ffa`efc40aa5
+00000035`2525f4f0  000001db`8d134c10 000001d6`a4205e00
+00000035`2525f500  00000000`00000009 000001db`8cf94dd8
+00000035`2525f510  000001db`8343aa40 00007ffa`efc408ea
+00000035`2525f520  000001d6`a4205e00 000001db`8343aa60
+00000035`2525f530  00000035`2525f600 000001db`8cf94dd8
+00000035`2525f540  00000000`00000001 000001db`939b26b0
+00000035`2525f550  000001db`8ae14540 000001db`8cf94dd0
+00000035`2525f560  000001db`8343aa40 00007ffa`efc308e1
+==FRAME 5
+05 00000035`2525f4b0 00007ffa`efc40aa5     amdhip64_7!amd::pal::VirtualGPU::Queue::waitForFence<0>+0x9f
+rax=000000000000005b rbx=0000000000000002 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=000001db8d134c10 rdi=00007ffaf05b7950
+rip=00007ffaefc2456f rsp=000000352525f4b0 rbp=000014c1e316b4f8
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=0000000000000048 r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!amd::pal::VirtualGPU::Queue::waitForFence<0>+0x9f:
+00007ffa`efc2456f 8bd8            mov     ebx,eax
+@rsi              class amd::pal::VirtualGPU::Queue * this = 0x000001db`8d134c10
+<unavailable>     unsigned int cbId = <value unavailable>
+@rbp              unsigned int64 start = 0x000014c1`e316b4f8
+<unavailable>     unsigned int64 end = <value unavailable>
+@ebx              Util::Result result = NotReady (0n2)
+Last set context:
+rax=000000000000005b rbx=0000000000000002 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=000001db8d134c10 rdi=00007ffaf05b7950
+rip=00007ffaefc2456f rsp=000000352525f4b0 rbp=000014c1e316b4f8
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=0000000000000048 r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!amd::pal::VirtualGPU::Queue::waitForFence<0>+0x9f:
+00007ffa`efc2456f 8bd8            mov     ebx,eax
+00000035`2525f4b0  00007ffa`f05b7950 00007ffa`efc3589e
+00000035`2525f4c0  000001db`8d140f18 000001d6`a4205e00
+00000035`2525f4d0  00000001`65a0bc00 00000000`00000009
+00000035`2525f4e0  00000000`bfffffff 00007ffa`efc40aa5
+00000035`2525f4f0  000001db`8d134c10 000001d6`a4205e00
+00000035`2525f500  00000000`00000009 000001db`8cf94dd8
+00000035`2525f510  000001db`8343aa40 00007ffa`efc408ea
+00000035`2525f520  000001d6`a4205e00 000001db`8343aa60
+00000035`2525f530  00000035`2525f600 000001db`8cf94dd8
+00000035`2525f540  00000000`00000001 000001db`939b26b0
+00000035`2525f550  000001db`8ae14540 000001db`8cf94dd0
+00000035`2525f560  000001db`8343aa40 00007ffa`efc308e1
+00000035`2525f570  000001db`8343aa60 000001d6`a34f6180
+00000035`2525f580  000001d6`a3cf1d40 00000035`2525f600
+00000035`2525f590  000001db`9dfd8b1a 00007ffa`efb43cf5
+00000035`2525f5a0  000001d6`a3cf1b50 000001db`8343aa40
+==FRAME 6
+06 00000035`2525f4f0 00007ffa`efc408ea     amdhip64_7!amd::pal::VirtualGPU::Queue::waitForEvent+0x65
+rax=000000000000005b rbx=000001d6a4205e00 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=000001db8cf94dd8 rdi=000001db8d134c10
+rip=00007ffaefc40aa5 rsp=000000352525f4f0 rbp=0000000000000009
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=00000000bfffffff r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!amd::pal::VirtualGPU::Queue::waitForEvent+0x65:
+00007ffa`efc40aa5 0fb6f0          movzx   esi,al
+@rdi              class amd::pal::VirtualGPU::Queue * this = 0x000001db`8d134c10
+@ebp              unsigned int id = 9
+<unavailable>     unsigned int slotId = <value unavailable>
+00000035`2525f520 class std::scoped_lock<std::recursive_mutex> l = (locked)
+@al               bool result = true
+Last set context:
+rax=000000000000005b rbx=000001d6a4205e00 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=000001db8cf94dd8 rdi=000001db8d134c10
+rip=00007ffaefc40aa5 rsp=000000352525f4f0 rbp=0000000000000009
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=00000000bfffffff r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!amd::pal::VirtualGPU::Queue::waitForEvent+0x65:
+00007ffa`efc40aa5 0fb6f0          movzx   esi,al
+00000035`2525f4f0  000001db`8d134c10 000001d6`a4205e00
+00000035`2525f500  00000000`00000009 000001db`8cf94dd8
+00000035`2525f510  000001db`8343aa40 00007ffa`efc408ea
+00000035`2525f520  000001d6`a4205e00 000001db`8343aa60
+00000035`2525f530  00000035`2525f600 000001db`8cf94dd8
+00000035`2525f540  00000000`00000001 000001db`939b26b0
+00000035`2525f550  000001db`8ae14540 000001db`8cf94dd0
+00000035`2525f560  000001db`8343aa40 00007ffa`efc308e1
+00000035`2525f570  000001db`8343aa60 000001d6`a34f6180
+00000035`2525f580  000001d6`a3cf1d40 00000035`2525f600
+00000035`2525f590  000001db`9dfd8b1a 00007ffa`efb43cf5
+00000035`2525f5a0  000001d6`a3cf1b50 000001db`8343aa40
+00000035`2525f5b0  000001db`8343aa40 00007ffa`efc3b3be
+00000035`2525f5c0  000001db`8cf94dd0 000001db`8343ad20
+00000035`2525f5d0  00000035`2525f679 00007ffa`efb258fd
+00000035`2525f5e0  000001db`8ae14540 000001d6`a3cf1b50
+==FRAME 7
+07 (Inline Function) --------`--------     amdhip64_7!amd::pal::VirtualGPU::waitForEvent+0x25
+rax=000000000000005b rbx=000001db8343aa60 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=000001db8cf94dd8 rdi=000001db8343aa40
+rip=00007ffaefc408ea rsp=000000352525f520 rbp=000000352525f600
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=00000000bfffffff r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!GpuEvent::isValid+0x25 [inlined in amdhip64_7!amd::pal::VirtualGPU::waitEventLock+0x10a]:
+00007ffa`efc408ea 418bd6          mov     edx,r14d
+Last set context:
+rax=000000000000005b rbx=000001db8343aa60 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=000001db8cf94dd8 rdi=000001db8343aa40
+rip=00007ffaefc408ea rsp=000000352525f520 rbp=000000352525f600
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=00000000bfffffff r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!GpuEvent::isValid+0x25 [inlined in amdhip64_7!amd::pal::VirtualGPU::waitEventLock+0x10a]:
+00007ffa`efc408ea 418bd6          mov     edx,r14d
+00000035`2525f520  000001d6`a4205e00 000001db`8343aa60
+00000035`2525f530  00000035`2525f600 000001db`8cf94dd8
+00000035`2525f540  00000000`00000001 000001db`939b26b0
+00000035`2525f550  000001db`8ae14540 000001db`8cf94dd0
+00000035`2525f560  000001db`8343aa40 00007ffa`efc308e1
+00000035`2525f570  000001db`8343aa60 000001d6`a34f6180
+00000035`2525f580  000001d6`a3cf1d40 00000035`2525f600
+00000035`2525f590  000001db`9dfd8b1a 00007ffa`efb43cf5
+00000035`2525f5a0  000001d6`a3cf1b50 000001db`8343aa40
+00000035`2525f5b0  000001db`8343aa40 00007ffa`efc3b3be
+00000035`2525f5c0  000001db`8cf94dd0 000001db`8343ad20
+00000035`2525f5d0  00000035`2525f679 00007ffa`efb258fd
+00000035`2525f5e0  000001db`8ae14540 000001d6`a3cf1b50
+00000035`2525f5f0  000001d6`a3cf1d00 00000000`00000000
+00000035`2525f600  000001d6`a0b7c0f0 00007ffa`efb487b0
+00000035`2525f610  00000000`00000000 00000000`00000000
+==FRAME 8
+Reset base frame from 1 to 0, which points to the inner-most inline function frame.
+07 (Inline Function) --------`--------     amdhip64_7!GpuEvent::isValid+0x25
+rax=000000000000005b rbx=000001db8343aa60 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=000001db8cf94dd8 rdi=000001db8343aa40
+rip=00007ffaefc408ea rsp=000000352525f520 rbp=000000352525f600
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=00000000bfffffff r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!GpuEvent::isValid+0x25 [inlined in amdhip64_7!amd::pal::VirtualGPU::waitEventLock+0x10a]:
+00007ffa`efc408ea 418bd6          mov     edx,r14d
+Last set context:
+rax=000000000000005b rbx=000001db8343aa60 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=000001db8cf94dd8 rdi=000001db8343aa40
+rip=00007ffaefc408ea rsp=000000352525f520 rbp=000000352525f600
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=00000000bfffffff r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!GpuEvent::isValid+0x25 [inlined in amdhip64_7!amd::pal::VirtualGPU::waitEventLock+0x10a]:
+00007ffa`efc408ea 418bd6          mov     edx,r14d
+00000035`2525f520  000001d6`a4205e00 000001db`8343aa60
+00000035`2525f530  00000035`2525f600 000001db`8cf94dd8
+00000035`2525f540  00000000`00000001 000001db`939b26b0
+00000035`2525f550  000001db`8ae14540 000001db`8cf94dd0
+00000035`2525f560  000001db`8343aa40 00007ffa`efc308e1
+00000035`2525f570  000001db`8343aa60 000001d6`a34f6180
+00000035`2525f580  000001d6`a3cf1d40 00000035`2525f600
+00000035`2525f590  000001db`9dfd8b1a 00007ffa`efb43cf5
+00000035`2525f5a0  000001d6`a3cf1b50 000001db`8343aa40
+00000035`2525f5b0  000001db`8343aa40 00007ffa`efc3b3be
+00000035`2525f5c0  000001db`8cf94dd0 000001db`8343ad20
+00000035`2525f5d0  00000035`2525f679 00007ffa`efb258fd
+00000035`2525f5e0  000001db`8ae14540 000001d6`a3cf1b50
+00000035`2525f5f0  000001d6`a3cf1d00 00000000`00000000
+00000035`2525f600  000001d6`a0b7c0f0 00007ffa`efb487b0
+00000035`2525f610  00000000`00000000 00000000`00000000
+==FRAME 9
+Reset base frame from 2 to 0, which points to the inner-most inline function frame.
+07 (Inline Function) --------`--------     amdhip64_7!GpuEvent::isValid+0x25
+rax=000000000000005b rbx=000001db8343aa60 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=000001db8cf94dd8 rdi=000001db8343aa40
+rip=00007ffaefc408ea rsp=000000352525f520 rbp=000000352525f600
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=00000000bfffffff r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!GpuEvent::isValid+0x25 [inlined in amdhip64_7!amd::pal::VirtualGPU::waitEventLock+0x10a]:
+00007ffa`efc408ea 418bd6          mov     edx,r14d
+Last set context:
+rax=000000000000005b rbx=000001db8343aa60 rcx=0000000000000001
+rdx=000000352525f3b0 rsi=000001db8cf94dd8 rdi=000001db8343aa40
+rip=00007ffaefc408ea rsp=000000352525f520 rbp=000000352525f600
+ r8=0000000000000000  r9=0000000000000000 r10=0000000000000001
+r11=0000000000000001 r12=0000000000000000 r13=000001db8cf94dd0
+r14=00000000bfffffff r15=0000000000000009
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+amdhip64_7!GpuEvent::isValid+0x25 [inlined in amdhip64_7!amd::pal::VirtualGPU::waitEventLock+0x10a]:
+00007ffa`efc408ea 418bd6          mov     edx,r14d
+00000035`2525f520  000001d6`a4205e00 000001db`8343aa60
+00000035`2525f530  00000035`2525f600 000001db`8cf94dd8
+00000035`2525f540  00000000`00000001 000001db`939b26b0
+00000035`2525f550  000001db`8ae14540 000001db`8cf94dd0
+00000035`2525f560  000001db`8343aa40 00007ffa`efc308e1
+00000035`2525f570  000001db`8343aa60 000001d6`a34f6180
+00000035`2525f580  000001d6`a3cf1d40 00000035`2525f600
+00000035`2525f590  000001db`9dfd8b1a 00007ffa`efb43cf5
+00000035`2525f5a0  000001d6`a3cf1b50 000001db`8343aa40
+00000035`2525f5b0  000001db`8343aa40 00007ffa`efc3b3be
+00000035`2525f5c0  000001db`8cf94dd0 000001db`8343ad20
+00000035`2525f5d0  00000035`2525f679 00007ffa`efb258fd
+00000035`2525f5e0  000001db`8ae14540 000001d6`a3cf1b50
+00000035`2525f5f0  000001d6`a3cf1d00 00000000`00000000
+00000035`2525f600  000001d6`a0b7c0f0 00007ffa`efb487b0
+00000035`2525f610  00000000`00000000 00000000`00000000
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

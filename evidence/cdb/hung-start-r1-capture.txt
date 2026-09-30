@@ -1,0 +1,2150 @@
+== request hung >10s, capturing
+---- PID 45788 cdb ~*kn
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.015 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.8249 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\tr\b\core\clr\build\hipamd\src
+Deferred                                       srv*<symcache>*https://msdl.microsoft.com/download/symbols
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\tr\b\core\clr\build\hipamd\src
+Deferred                                       srv*<symcache>*https://msdl.microsoft.com/download/symbols
+Symbol search path is: C:\tr\b\core\clr\build\hipamd\src;srv*<symcache>*https://msdl.microsoft.com/download/symbols
+Executable search path is: 
+WARNING: Process 45788 is not attached as a debuggee
+         The process can be examined but debug events will not be received
+.......
+(b2dc.bdd0): Wake debugger - code 80000007 (first chance)
+
++------------------------------------------------------------------------+
+| This target supports Hardware-enforced Stack Protection. A HW based    |
+| "Shadow Stack" may be available to assist in debugging and analysis.   |
+| See aka.ms/userhsp for more info.                                      |
+|                                                                        |
+| dps @ssp                                                               |
+|                                                                        |
++------------------------------------------------------------------------+
+
+ntdll!NtWaitForSingleObject+0x14:
+00007ffb`a4f60e44 c3              ret
+0:000> cdb: Reading initial command '~*kn; q'
+
+.  0  Id: b2dc.bdd0 Suspend: 1 Teb: 000000af`08504000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 000000af`0839dd38 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 000000af`0839dd40 00007ff7`5a29155f     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 000000af`0839dde0 00007ff7`5a291665     python+0x155f
+03 000000af`0839df70 00007ff7`5a291cdd     python+0x1665
+04 000000af`0839dfb0 00007ff7`5a291d19     python+0x1cdd
+05 000000af`0839f850 00007ff7`5a291f40     python+0x1d19
+06 000000af`0839f880 00007ffb`a3a6cd87     python+0x1f40
+07 000000af`0839f8c0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+08 000000af`0839f8f0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   1  Id: b2dc.85c0 Suspend: 1 Teb: 000000af`08506000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 000000af`086ff4c8 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 000000af`086ff4d0 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 000000af`086ff830 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 000000af`086ff860 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   2  Id: b2dc.93b8 Suspend: 1 Teb: 000000af`08508000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 000000af`087ff978 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 000000af`087ff980 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 000000af`087ffce0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 000000af`087ffd10 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'
+---- PID 608 cdb ~*kn
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.015 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.8249 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\tr\b\core\clr\build\hipamd\src
+Deferred                                       srv*<symcache>*https://msdl.microsoft.com/download/symbols
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\tr\b\core\clr\build\hipamd\src
+Deferred                                       srv*<symcache>*https://msdl.microsoft.com/download/symbols
+Symbol search path is: C:\tr\b\core\clr\build\hipamd\src;srv*<symcache>*https://msdl.microsoft.com/download/symbols
+Executable search path is: 
+WARNING: Process 608 is not attached as a debuggee
+         The process can be examined but debug events will not be received
+................................................................
+................................................................
+................
+Loading unloaded module list
+........
+(260.c34c): Wake debugger - code 80000007 (first chance)
+
++------------------------------------------------------------------------+
+| This target supports Hardware-enforced Stack Protection. A HW based    |
+| "Shadow Stack" may be available to assist in debugging and analysis.   |
+| See aka.ms/userhsp for more info.                                      |
+|                                                                        |
+| dps @ssp                                                               |
+|                                                                        |
++------------------------------------------------------------------------+
+
+ntdll!NtWaitForSingleObject+0x14:
+00007ffb`a4f60e44 c3              ret
+0:000> cdb: Reading initial command '~*kn; q'
+
+.  0  Id: 260.c34c Suspend: 1 Teb: 00000019`8e2db000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8e5e2c18 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000019`8e5e2c20 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000019`8e5e2cb0 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+03 00000019`8e5e2e70 00007ffb`9ee324d3     WS2_32!select+0x201
+04 00000019`8e5e2fd0 00007ffb`9ee322e5     select!PyInit_select+0x1383
+05 00000019`8e5ef110 00007ffb`35e539f2     select!PyInit_select+0x1195
+06 00000019`8e5ef150 00007ffb`35e081e4     python312!PyEval_EvalFrameDefault+0x13e2
+07 00000019`8e5ef380 00007ffb`35e06b66     python312!PyObject_ClearManagedDict+0x384
+08 00000019`8e5ef3c0 00007ffb`35ebe656     python312!PyEval_EvalCode+0xb6
+09 00000019`8e5ef440 00007ffb`35ebe52c     python312!Py_SourceAsString+0x72a
+0a 00000019`8e5ef4d0 00007ffb`35e38376     python312!Py_SourceAsString+0x600
+0b 00000019`8e5ef580 00007ffb`35e51a5f     python312!PySet_Add+0xac2
+0c 00000019`8e5ef5c0 00007ffb`35e519c5     python312!PyObject_Vectorcall+0xcf
+0d 00000019`8e5ef640 00007ffb`35e52ea5     python312!PyObject_Vectorcall+0x35
+0e 00000019`8e5ef680 00007ffb`35e5103c     python312!PyEval_EvalFrameDefault+0x895
+0f 00000019`8e5ef8b0 00007ffb`35e82815     python312!PyFunction_Vectorcall+0x17c
+10 00000019`8e5ef910 00007ffb`35e8275f     python312!PyObject_Call+0x125
+11 00000019`8e5ef950 00007ffb`35f582c4     python312!PyObject_Call+0x6f
+12 00000019`8e5ef9a0 00007ffb`35df8ea0     python312!Py_GetLocaleconvNumeric+0x268
+13 00000019`8e5ef9f0 00007ffb`35df8700     python312!PyMem_GetAllocator+0x584
+14 00000019`8e5efa70 00007ffb`35df86e3     python312!Py_RunMain+0x18
+15 00000019`8e5efaa0 00007ff7`54381230     python312!Py_Main+0x2b
+16 00000019`8e5efaf0 00007ffb`a3a6cd87     python+0x1230
+17 00000019`8e5efb30 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+18 00000019`8e5efb60 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   1  Id: 260.24e4 Suspend: 1 Teb: 00000019`8e2dd000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8e7df908 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000019`8e7df910 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000019`8e7dfc70 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000019`8e7dfca0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   2  Id: 260.9b08 Suspend: 1 Teb: 00000019`8e2df000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8e9cf448 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000019`8e9cf450 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000019`8e9cf7b0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000019`8e9cf7e0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   3  Id: 260.b380 Suspend: 1 Teb: 00000019`8e2e1000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8ebbf4e8 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000019`8ebbf4f0 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000019`8ebbf850 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000019`8ebbf880 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   4  Id: 260.c3f4 Suspend: 1 Teb: 00000019`8e2e5000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8ef9f208 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`8ef9f210 00007ffb`a3c7feae     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 (Inline Function) --------`--------     combase!WaitCoalesced+0x79
+03 00000019`8ef9f500 00007ffb`a3d557af     combase!CROIDTable::WorkerThreadLoop+0xae
+04 00000019`8ef9f770 00007ffb`a3d556bf     combase!CRpcThread::WorkerLoop+0x5b
+05 00000019`8ef9f7e0 00007ffb`a3a6cd87     combase!CRpcThreadCache::RpcWorkerThreadEntry+0x4f
+06 00000019`8ef9f810 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+07 00000019`8ef9f840 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   5  Id: 260.8c04 Suspend: 1 Teb: 00000019`8e2e7000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8f18f6f8 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000019`8f18f700 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000019`8f18fa60 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000019`8f18fa90 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   6  Id: 260.aec0 Suspend: 1 Teb: 00000019`8e2e9000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8f37f478 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000019`8f37f480 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000019`8f37f7e0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000019`8f37f810 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   7  Id: 260.bf10 Suspend: 1 Teb: 00000019`8e2ed000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8edaf588 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`8edaf590 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`8edaf880 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`8edaf8c0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+   8  Id: 260.b7a0 Suspend: 1 Teb: 00000019`8e2ef000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8f56f6b8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`8f56f6c0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`8f56f9b0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`8f56f9f0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+   9  Id: 260.a544 Suspend: 1 Teb: 00000019`8e2f1000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8f75f7f8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`8f75f800 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`8f75faf0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`8f75fb30 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  10  Id: 260.4d2c Suspend: 1 Teb: 00000019`8e2f3000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8f94fa98 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`8f94faa0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`8f94fd90 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`8f94fdd0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  11  Id: 260.b908 Suspend: 1 Teb: 00000019`8e2f5000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8fb3f6d8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`8fb3f6e0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`8fb3f9d0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`8fb3fa10 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  12  Id: 260.9b64 Suspend: 1 Teb: 00000019`8e2f7000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8fd2fa28 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`8fd2fa30 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`8fd2fd20 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`8fd2fd60 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  13  Id: 260.bec4 Suspend: 1 Teb: 00000019`8e2f9000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`8ff1f938 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`8ff1f940 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`8ff1fc30 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`8ff1fc70 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  14  Id: 260.adb8 Suspend: 1 Teb: 00000019`8e2fb000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`9010fa28 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`9010fa30 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`9010fd20 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`9010fd60 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  15  Id: 260.5990 Suspend: 1 Teb: 00000019`8e2fd000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`902ff7e8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`902ff7f0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`902ffae0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`902ffb20 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  16  Id: 260.baf8 Suspend: 1 Teb: 00000019`8e2ff000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`904ef7b8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`904ef7c0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`904efab0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`904efaf0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  17  Id: 260.5d34 Suspend: 1 Teb: 00000019`8e301000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`906dfb88 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`906dfb90 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`906dfe80 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`906dfec0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  18  Id: 260.9aec Suspend: 1 Teb: 00000019`8e303000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`908cf6a8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`908cf6b0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`908cf9a0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`908cf9e0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  19  Id: 260.c364 Suspend: 1 Teb: 00000019`8e305000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`90abf8d8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`90abf8e0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`90abfbd0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`90abfc10 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  20  Id: 260.c21c Suspend: 1 Teb: 00000019`8e307000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`90caf778 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`90caf780 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`90cafa70 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`90cafab0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  21  Id: 260.6180 Suspend: 1 Teb: 00000019`8e309000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`90e9f6d8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`90e9f6e0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`90e9f9d0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`90e9fa10 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  22  Id: 260.b034 Suspend: 1 Teb: 00000019`8e30b000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`9108f628 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`9108f630 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`9108f920 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`9108f960 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  23  Id: 260.bfa8 Suspend: 1 Teb: 00000019`8e30d000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`9127f658 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`9127f660 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`9127f950 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`9127f990 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  24  Id: 260.4268 Suspend: 1 Teb: 00000019`8e30f000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`9146f898 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`9146f8a0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`9146fb90 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`9146fbd0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  25  Id: 260.b44c Suspend: 1 Teb: 00000019`8e311000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`9165f6a8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`9165f6b0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`9165f9a0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`9165f9e0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  26  Id: 260.79b0 Suspend: 1 Teb: 00000019`8e313000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`9184f568 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`9184f570 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`9184f860 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`9184f8a0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  27  Id: 260.4040 Suspend: 1 Teb: 00000019`8e315000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`91a3f858 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`91a3f860 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`91a3fb50 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`91a3fb90 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  28  Id: 260.ee4 Suspend: 1 Teb: 00000019`8e317000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`91c2f578 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`91c2f580 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`91c2f870 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`91c2f8b0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  29  Id: 260.b8ec Suspend: 1 Teb: 00000019`8e319000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`91e1fac8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000019`91e1fad0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000019`91e1fdc0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000019`91e1fe00 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  30  Id: 260.1960 Suspend: 1 Teb: 00000019`8e31b000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`9200f988 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000019`9200f990 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000019`9200fcf0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000019`9200fd20 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  31  Id: 260.c330 Suspend: 1 Teb: 00000019`8e31d000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`923af348 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000019`923af350 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000019`923af3e0 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+*** WARNING: Unable to verify checksum for C:\tr\venv-hip\Lib\site-packages\zmq\backend\cython\_zmq.pyd
+03 00000019`923af5a0 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000019`923af700 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000019`9240f7a0 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000019`9240f850 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000019`9240f880 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000019`9240f8b0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000019`9240f8e0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  32  Id: 260.16d0 Suspend: 1 Teb: 00000019`8e31f000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`927af788 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000019`927af790 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000019`927af820 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+03 00000019`927af9e0 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000019`927afb40 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000019`9280fbe0 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000019`9280fc90 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000019`9280fcc0 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000019`9280fcf0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000019`9280fd20 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  33  Id: 260.ba90 Suspend: 1 Teb: 00000019`8e321000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`92baf388 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000019`92baf390 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000019`92baf420 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+03 00000019`92baf5e0 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000019`92baf740 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000019`92c0f7e0 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000019`92c0f890 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000019`92c0f8c0 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000019`92c0f8f0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000019`92c0f920 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  34  Id: 260.b410 Suspend: 1 Teb: 00000019`8e323000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`92faf298 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000019`92faf2a0 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000019`92faf330 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+03 00000019`92faf4f0 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000019`92faf650 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000019`9300f6f0 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000019`9300f7a0 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000019`9300f7d0 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000019`9300f800 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000019`9300f830 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  35  Id: 260.98d4 Suspend: 1 Teb: 00000019`8e325000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`931ff968 00007ffb`a1246b1f     ntdll!NtRemoveIoCompletion+0x14
+01 00000019`931ff970 00007ffb`a3a6cd87     mswsock!SockAsyncThread+0xaf
+02 00000019`931ff9d0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000019`931ffa00 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  36  Id: 260.b5c8 Suspend: 1 Teb: 00000019`8e327000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000019`933ef868 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000019`933ef870 00007ffb`35f5f316     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000019`933ef910 00007ffb`35f5f23d     python312!PyThread_GetInfo+0x3b2
+03 00000019`933ef970 00007ffb`35e532b5     python312!PyThread_GetInfo+0x2d9
+04 00000019`933ef9a0 00007ffb`35e5103c     python312!PyEval_EvalFrameDefault+0xca5
+05 00000019`933efbd0 00007ffb`35e4be6c     python312!PyFunction_Vectorcall+0x17c
+06 00000019`933efc30 00007ffb`35e82815     python312!PyArg_CheckPositional+0x4b0
+07 00000019`933efcf0 00007ffb`35e8275f     python312!PyObject_Call+0x125
+08 00000019`933efd30 00007ffb`35df304c     python312!PyObject_Call+0x6f
+09 00000019`933efd80 00007ffb`35df2ff2     python312!PyInterpreterState_Delete+0x500
+0a 00000019`933efdb0 00007ffb`a261cd30     python312!PyInterpreterState_Delete+0x4a6
+0b 00000019`933efde0 00007ffb`a3a6cd87     ucrtbase!thread_start<unsigned int (__cdecl*)(void *),1>+0x30
+0c 00000019`933efe10 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0d 00000019`933efe40 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'
+---- PID 47068 cdb ~*kn
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.016 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.8249 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\tr\b\core\clr\build\hipamd\src
+Deferred                                       srv*<symcache>*https://msdl.microsoft.com/download/symbols
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\tr\b\core\clr\build\hipamd\src
+Deferred                                       srv*<symcache>*https://msdl.microsoft.com/download/symbols
+Symbol search path is: C:\tr\b\core\clr\build\hipamd\src;srv*<symcache>*https://msdl.microsoft.com/download/symbols
+Executable search path is: 
+WARNING: Process 47068 is not attached as a debuggee
+         The process can be examined but debug events will not be received
+................................................................
+................................................................
+............................
+Loading unloaded module list
+........
+(b7dc.b628): Wake debugger - code 80000007 (first chance)
+
++------------------------------------------------------------------------+
+| This target supports Hardware-enforced Stack Protection. A HW based    |
+| "Shadow Stack" may be available to assist in debugging and analysis.   |
+| See aka.ms/userhsp for more info.                                      |
+|                                                                        |
+| dps @ssp                                                               |
+|                                                                        |
++------------------------------------------------------------------------+
+
+ntdll!NtQueryInformationThread+0x14:
+00007ffb`a4f61264 c3              ret
+0:000> cdb: Reading initial command '~*kn; q'
+
+.  0  Id: b7dc.b628 Suspend: 1 Teb: 00000035`1c5d7000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1c7eda38 00007ffb`a20bb3e8     ntdll!NtQueryInformationThread+0x14
+*** WARNING: Unable to verify checksum for C:\tr\venv-hip\Lib\site-packages\_rocm_sdk_core\bin\amdhip64_7.dll
+01 00000035`1c7eda40 00007ffa`efaf635b     KERNELBASE!GetExitCodeThread+0x38
+02 00000035`1c7edab0 00007ffa`efb41716     amdhip64_7!amd::Os::isThreadAlive+0x1b
+03 00000035`1c7edae0 00007ffa`efb47d43     amdhip64_7!amd::Event::awaitCompletion+0x126
+04 00000035`1c7edb60 00007ffa`ef86063e     amdhip64_7!amd::HostQueue::finishCommand+0x163
+05 00000035`1c7edb90 00007ffa`ef82de47     amdhip64_7!hip::ihipMemcpy+0x31e
+06 00000035`1c7edc50 00007ffa`efa2247e     amdhip64_7!hip::hipMemcpyWithStream+0x12d7
+*** WARNING: Unable to verify checksum for C:\tr\venv-hip\Lib\site-packages\torch\lib\c10_hip.dll
+07 00000035`1c7ee370 00007ffa`fa9722e9     amdhip64_7!hipMemcpyWithStream+0x4e
+*** WARNING: Unable to verify checksum for C:\tr\venv-hip\Lib\site-packages\torch\lib\torch_hip.dll
+08 00000035`1c7ee410 00007ffa`6edda3ba     c10_hip!c10::cuda::memcpy_and_sync+0x49
+*** WARNING: Unable to verify checksum for C:\tr\venv-hip\Lib\site-packages\torch\lib\torch_cpu.dll
+09 00000035`1c7ee470 00007ffa`816326cb     torch_hip!at::native::slow_conv2d_backward_cuda+0x83ca
+0a 00000035`1c7ee590 00007ffa`8266051d     torch_cpu!at::native::copy_+0x8cb
+0b 00000035`1c7eea30 00007ffa`819b2a15     torch_cpu!at::_ops::copy_::call+0xed
+0c 00000035`1c7eeb10 00007ffa`82ab04d3     torch_cpu!at::native::_to_copy+0xcc5
+0d 00000035`1c7eed10 00007ffa`820d91ee     torch_cpu!at::compositeexplicitautograd::_fused_moving_avg_obs_fq_helper_outf+0x343
+0e 00000035`1c7eed80 00007ffa`82995dc2     torch_cpu!at::_ops::_to_copy::redispatch+0xfe
+0f 00000035`1c7eee40 00007ffa`820d7fd3     torch_cpu!at::_ops::_foobar_out::redispatch+0x28102
+10 00000035`1c7eef00 00007ffa`819b42f9     torch_cpu!at::_ops::_to_copy::call+0x1c3
+11 00000035`1c7ef040 00007ffa`82ce64a6     torch_cpu!at::native::to+0x129
+12 00000035`1c7ef100 00007ffa`8223af53     torch_cpu!at::compositeimplicitautograd::to+0x436
+*** WARNING: Unable to verify checksum for C:\tr\venv-hip\Lib\site-packages\torch\lib\torch_python.dll
+13 00000035`1c7ef150 00007ffa`6d07897c     torch_cpu!at::_ops::to_device::call+0x193
+14 00000035`1c7ef280 00007ffa`6d07c6ea     torch_python!torch::utils::legacy_tensor_ctor+0x16ec
+15 00000035`1c7ef5f0 00007ffa`6ca271ad     torch_python!torch::utils::legacy_tensor_ctor+0x545a
+16 00000035`1c7ef740 00007ffb`35e079e4     torch_python!torch::autograd::THPCppFunction_Check+0x2783d
+17 00000035`1c7ef900 00007ffb`35e52018     python312!PyThread_acquire_lock_timed+0x5f0
+18 00000035`1c7ef930 00007ffb`35e519c5     python312!PyObject_Vectorcall+0x688
+19 00000035`1c7ef9b0 00007ffb`35e52ea5     python312!PyObject_Vectorcall+0x35
+1a 00000035`1c7ef9f0 00007ffb`35e081e4     python312!PyEval_EvalFrameDefault+0x895
+1b 00000035`1c7efc20 00007ffb`35e06b66     python312!PyObject_ClearManagedDict+0x384
+1c 00000035`1c7efc60 00007ffb`35ebe838     python312!PyEval_EvalCode+0xb6
+1d 00000035`1c7efce0 00007ffb`35ebea70     python312!Py_SourceAsString+0x90c
+1e 00000035`1c7efd10 00007ffb`35ebebdf     python312!PyModule_ClearDict+0x1fc
+1f 00000035`1c7efd60 00007ffb`35f58871     python312!PyRun_StringFlags+0x7b
+20 00000035`1c7efdb0 00007ffb`35f587ff     python312!PyRun_SimpleStringFlags+0x41
+21 00000035`1c7efdf0 00007ffb`35df8ee2     python312!PyThread_tss_set+0x303
+22 00000035`1c7efe20 00007ffb`35df8700     python312!PyMem_GetAllocator+0x5c6
+23 00000035`1c7efea0 00007ffb`35df86e3     python312!Py_RunMain+0x18
+24 00000035`1c7efed0 00007ff7`54381230     python312!Py_Main+0x2b
+25 00000035`1c7eff20 00007ffb`a3a6cd87     python+0x1230
+26 00000035`1c7eff60 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+27 00000035`1c7eff90 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   1  Id: b7dc.a26c Suspend: 1 Teb: 00000035`1c5d9000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1c9df668 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000035`1c9df670 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000035`1c9df9d0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000035`1c9dfa00 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   2  Id: b7dc.bc80 Suspend: 1 Teb: 00000035`1c5db000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1cbcf5a8 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000035`1cbcf5b0 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000035`1cbcf910 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000035`1cbcf940 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   3  Id: b7dc.b05c Suspend: 1 Teb: 00000035`1c5dd000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1cdbf6f8 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000035`1cdbf700 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000035`1cdbfa60 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000035`1cdbfa90 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   4  Id: b7dc.9564 Suspend: 1 Teb: 00000035`1c5e1000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1d19f2a8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1d19f2b0 00007ffb`a3c7feae     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 (Inline Function) --------`--------     combase!WaitCoalesced+0x79
+03 00000035`1d19f5a0 00007ffb`a3d557af     combase!CROIDTable::WorkerThreadLoop+0xae
+04 00000035`1d19f810 00007ffb`a3d556bf     combase!CRpcThread::WorkerLoop+0x5b
+05 00000035`1d19f880 00007ffb`a3a6cd87     combase!CRpcThreadCache::RpcWorkerThreadEntry+0x4f
+06 00000035`1d19f8b0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+07 00000035`1d19f8e0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   5  Id: b7dc.c264 Suspend: 1 Teb: 00000035`1c5e3000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1d38f2a8 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+*** WARNING: Unable to verify checksum for C:\tr\venv-hip\Lib\site-packages\torch\lib\uv.dll
+01 00000035`1d38f2b0 00007ffa`f97de5fd     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`1d38f350 00007ffb`a4e85e7b     uv!uv_tcp_simultaneous_accepts+0x124d
+03 00000035`1d38f3a0 00007ffb`a4e1ab00     ntdll!RtlpTpWorkCallback+0x22b
+04 00000035`1d38f480 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x820
+05 00000035`1d38f7e0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+06 00000035`1d38f810 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   6  Id: b7dc.b3c4 Suspend: 1 Teb: 00000035`1c5e5000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1d57f598 00007ffb`a36a26b8     win32u!NtUserGetMessage+0x14
+01 00000035`1d57f5a0 00007ffa`f97de576     USER32!GetMessageA+0x48
+02 00000035`1d57f600 00007ffb`a4e85e7b     uv!uv_tcp_simultaneous_accepts+0x11c6
+03 00000035`1d57f680 00007ffb`a4e1ab00     ntdll!RtlpTpWorkCallback+0x22b
+04 00000035`1d57f760 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x820
+05 00000035`1d57fac0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+06 00000035`1d57faf0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   7  Id: b7dc.c39c Suspend: 1 Teb: 00000035`1c5e9000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1cfaf808 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1cfaf810 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1cfafb00 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1cfafb40 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+   8  Id: b7dc.ace0 Suspend: 1 Teb: 00000035`1c5eb000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1d76f8a8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1d76f8b0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1d76fba0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1d76fbe0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+   9  Id: b7dc.c2b4 Suspend: 1 Teb: 00000035`1c5ed000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1d95fab8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1d95fac0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1d95fdb0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1d95fdf0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  10  Id: b7dc.85f0 Suspend: 1 Teb: 00000035`1c5ef000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1db4fa08 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1db4fa10 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1db4fd00 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1db4fd40 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  11  Id: b7dc.1028 Suspend: 1 Teb: 00000035`1c5f1000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1dd3f3c8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1dd3f3d0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1dd3f6c0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1dd3f700 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  12  Id: b7dc.8a64 Suspend: 1 Teb: 00000035`1c5f3000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1df2fad8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1df2fae0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1df2fdd0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1df2fe10 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  13  Id: b7dc.42a0 Suspend: 1 Teb: 00000035`1c5f5000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1e11f5a8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1e11f5b0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1e11f8a0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1e11f8e0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  14  Id: b7dc.9e98 Suspend: 1 Teb: 00000035`1c5f7000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1e30f3d8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1e30f3e0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1e30f6d0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1e30f710 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  15  Id: b7dc.a890 Suspend: 1 Teb: 00000035`1c5f9000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1e4ff638 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1e4ff640 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1e4ff930 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1e4ff970 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  16  Id: b7dc.1110 Suspend: 1 Teb: 00000035`1c5fb000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1e6ef448 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1e6ef450 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1e6ef740 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1e6ef780 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  17  Id: b7dc.a724 Suspend: 1 Teb: 00000035`1c5fd000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1e8df708 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1e8df710 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1e8dfa00 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1e8dfa40 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  18  Id: b7dc.1a68 Suspend: 1 Teb: 00000035`1c400000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1eacf848 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1eacf850 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1eacfb40 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1eacfb80 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  19  Id: b7dc.a674 Suspend: 1 Teb: 00000035`1c402000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1ecbf608 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1ecbf610 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1ecbf900 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1ecbf940 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  20  Id: b7dc.1a64 Suspend: 1 Teb: 00000035`1c404000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1eeaf668 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1eeaf670 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1eeaf960 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1eeaf9a0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  21  Id: b7dc.b240 Suspend: 1 Teb: 00000035`1c406000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1f09f948 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1f09f950 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1f09fc40 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1f09fc80 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  22  Id: b7dc.6bc0 Suspend: 1 Teb: 00000035`1c408000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1f28f578 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1f28f580 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1f28f870 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1f28f8b0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  23  Id: b7dc.c020 Suspend: 1 Teb: 00000035`1c40a000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1f47f738 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1f47f740 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1f47fa30 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1f47fa70 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  24  Id: b7dc.92f8 Suspend: 1 Teb: 00000035`1c40c000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1f66fa38 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1f66fa40 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1f66fd30 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1f66fd70 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  25  Id: b7dc.a410 Suspend: 1 Teb: 00000035`1c40e000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1f85f928 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1f85f930 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1f85fc20 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1f85fc60 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  26  Id: b7dc.b0a4 Suspend: 1 Teb: 00000035`1c410000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1fa4f848 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1fa4f850 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1fa4fb40 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1fa4fb80 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  27  Id: b7dc.c018 Suspend: 1 Teb: 00000035`1c412000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1fc3f738 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1fc3f740 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1fc3fa30 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1fc3fa70 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  28  Id: b7dc.786c Suspend: 1 Teb: 00000035`1c414000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`1fe2f528 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`1fe2f530 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`1fe2f820 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`1fe2f860 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  29  Id: b7dc.9a94 Suspend: 1 Teb: 00000035`1c416000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`2001f5b8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`2001f5c0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`2001f8b0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`2001f8f0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  30  Id: b7dc.3ce8 Suspend: 1 Teb: 00000035`1c418000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`2020f188 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000035`2020f190 00007ffb`a1238464     mswsock!SockWaitForSingleObject+0x15a
+02 00000035`2020f220 00007ffb`a1249428     mswsock!MSAFD_WSPPoll+0x334
+03 00000035`2020f360 00007ffb`a3b34c91     mswsock!WSPIoctl+0x278
+04 00000035`2020f5e0 00007ffa`8699ac2c     WS2_32!WSAPoll+0x451
+05 00000035`2020f6e0 00007ffa`85cc9efc     torch_cpu!c10d::TCPStore::repr+0xb8c
+06 00000035`2020fa20 00007ffb`a261cd30     torch_cpu!torch::autograd::Engine::is_checkpoint_valid+0x57c
+07 00000035`2020fa60 00007ffb`a3a6cd87     ucrtbase!thread_start<unsigned int (__cdecl*)(void *),1>+0x30
+08 00000035`2020fa90 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000035`2020fac0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  31  Id: b7dc.c23c Suspend: 1 Teb: 00000035`1c41a000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`203ff9b8 00007ffb`a1246b1f     ntdll!NtRemoveIoCompletion+0x14
+01 00000035`203ff9c0 00007ffb`a3a6cd87     mswsock!SockAsyncThread+0xaf
+02 00000035`203ffa20 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000035`203ffa50 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  32  Id: b7dc.aff0 Suspend: 1 Teb: 00000035`1c41c000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`205ef5c8 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000035`205ef5d0 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000035`205ef930 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000035`205ef960 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  33  Id: b7dc.b358 Suspend: 1 Teb: 00000035`1c41e000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`207decb8 00007ffb`a20c147f     ntdll!NtRemoveIoCompletionEx+0x14
+01 00000035`207decc0 00007ffa`f97c7627     KERNELBASE!GetQueuedCompletionStatusEx+0xcf
+02 00000035`207ded70 00007ffa`f97c8204     uv!uv_cond_destroy+0x407
+03 00000035`207dfe00 00007ffa`87f72d9e     uv!uv_run+0x124
+04 00000035`207dfe40 00007ffb`a261cd30     torch_cpu!torch::xpu::synchronize+0x13eccae
+05 00000035`207dfeb0 00007ffb`a3a6cd87     ucrtbase!thread_start<unsigned int (__cdecl*)(void *),1>+0x30
+06 00000035`207dfee0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+07 00000035`207dff10 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  34  Id: b7dc.8cd4 Suspend: 1 Teb: 00000035`1c420000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`209cf578 00007ffb`a4ea298e     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000035`209cf580 00007ffb`a2022a58     ntdll!RtlSleepConditionVariableSRW+0x1de
+02 00000035`209cf620 00007ffb`8a0276ea     KERNELBASE!SleepConditionVariableSRW+0x38
+03 (Inline Function) --------`--------     MSVCP140!_Primitive_wait_for+0x17
+04 (Inline Function) --------`--------     MSVCP140!_Primitive_wait+0x17
+05 00000035`209cf660 00007ffa`8694d73f     MSVCP140!_Cnd_wait+0x2a
+06 00000035`209cf690 00007ffa`8695fcaf     torch_cpu!c10d::ProcessGroupGloo::runLoop+0xbf
+07 00000035`209cf780 00007ffb`a261cd30     torch_cpu!c10d::ProcessGroupGloo::merge+0x8df
+08 00000035`209cf7c0 00007ffb`a3a6cd87     ucrtbase!thread_start<unsigned int (__cdecl*)(void *),1>+0x30
+09 00000035`209cf7f0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`209cf820 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  35  Id: b7dc.b088 Suspend: 1 Teb: 00000035`1c422000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`20bbf908 00007ffb`a4ea298e     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000035`20bbf910 00007ffb`a2022a58     ntdll!RtlSleepConditionVariableSRW+0x1de
+02 00000035`20bbf9b0 00007ffb`8a0276ea     KERNELBASE!SleepConditionVariableSRW+0x38
+03 (Inline Function) --------`--------     MSVCP140!_Primitive_wait_for+0x17
+04 (Inline Function) --------`--------     MSVCP140!_Primitive_wait+0x17
+05 00000035`20bbf9f0 00007ffa`8694d73f     MSVCP140!_Cnd_wait+0x2a
+06 00000035`20bbfa20 00007ffa`8695fcaf     torch_cpu!c10d::ProcessGroupGloo::runLoop+0xbf
+07 00000035`20bbfb10 00007ffb`a261cd30     torch_cpu!c10d::ProcessGroupGloo::merge+0x8df
+08 00000035`20bbfb50 00007ffb`a3a6cd87     ucrtbase!thread_start<unsigned int (__cdecl*)(void *),1>+0x30
+09 00000035`20bbfb80 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`20bbfbb0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  36  Id: b7dc.5a6c Suspend: 1 Teb: 00000035`1c424000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`20daf538 00007ffb`a4ea298e     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000035`20daf540 00007ffb`a2022a58     ntdll!RtlSleepConditionVariableSRW+0x1de
+02 00000035`20daf5e0 00007ffa`f033d9a4     KERNELBASE!SleepConditionVariableSRW+0x38
+03 (Inline Function) --------`--------     amdhip64_7!_Primitive_wait_for+0x15
+04 (Inline Function) --------`--------     amdhip64_7!_Primitive_wait+0x15
+05 00000035`20daf620 00007ffa`efb4840d     amdhip64_7!_Cnd_wait+0x28
+06 (Inline Function) --------`--------     amdhip64_7!std::condition_variable::wait+0x8
+07 (Inline Function) --------`--------     amdhip64_7!amd::Monitor::wait+0x14a
+08 00000035`20daf650 00007ffa`efb48ae1     amdhip64_7!amd::HostQueue::loop+0x40d
+09 00000035`20daf720 00007ffa`efb72154     amdhip64_7!amd::HostQueue::Thread::run+0x31
+0a 00000035`20daf750 00007ffa`efaf590f     amdhip64_7!amd::Thread::main+0x2a4
+0b 00000035`20daf7c0 00007ffb`a3a6cd87     amdhip64_7!amd::Thread::entry+0xf
+0c 00000035`20daf7f0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0d 00000035`20daf820 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  37  Id: b7dc.5be0 Suspend: 1 Teb: 00000035`1c428000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`213af178 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`213af180 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`213af220 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`213af260 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`213af290 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`213af320 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`213af420 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`213af480 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`213af4d0 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`213af7e0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`213af810 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  38  Id: b7dc.c2dc Suspend: 1 Teb: 00000035`1c42a000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`217bf548 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`217bf550 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`217bf5f0 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`217bf630 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`217bf660 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`217bf6f0 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`217bf7f0 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`217bf850 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`217bf8a0 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`217bfbf0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`217bfc20 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  39  Id: b7dc.c244 Suspend: 1 Teb: 00000035`1c42c000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`21bcf568 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`21bcf570 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`21bcf610 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`21bcf650 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`21bcf680 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`21bcf710 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`21bcf810 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`21bcf870 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`21bcf8c0 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`21bcfc50 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`21bcfc80 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  40  Id: b7dc.ba10 Suspend: 1 Teb: 00000035`1c42e000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`21fdf558 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`21fdf560 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`21fdf600 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`21fdf640 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`21fdf670 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`21fdf700 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`21fdf800 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`21fdf860 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`21fdf8b0 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`21fdfc80 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`21fdfcb0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  41  Id: b7dc.880c Suspend: 1 Teb: 00000035`1c430000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`223ef308 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`223ef310 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`223ef3b0 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`223ef3f0 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`223ef420 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`223ef4b0 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`223ef5b0 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`223ef610 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`223ef660 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`223efa70 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`223efaa0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  42  Id: b7dc.6054 Suspend: 1 Teb: 00000035`1c432000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`227feff8 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`227ff000 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`227ff0a0 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`227ff0e0 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`227ff110 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`227ff1a0 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`227ff2a0 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`227ff300 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`227ff350 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`227ff7a0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`227ff7d0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  43  Id: b7dc.f38 Suspend: 1 Teb: 00000035`1c434000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`22c0f3d8 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`22c0f3e0 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`22c0f480 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`22c0f4c0 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`22c0f4f0 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`22c0f580 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`22c0f680 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`22c0f6e0 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`22c0f730 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`22c0fbc0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`22c0fbf0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  44  Id: b7dc.5f50 Suspend: 1 Teb: 00000035`1c436000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`2301f048 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`2301f050 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`2301f0f0 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`2301f130 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`2301f160 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`2301f1f0 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`2301f2f0 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`2301f350 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`2301f3a0 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`2301f870 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`2301f8a0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  45  Id: b7dc.8364 Suspend: 1 Teb: 00000035`1c438000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`2342f098 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`2342f0a0 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`2342f140 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`2342f180 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`2342f1b0 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`2342f240 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`2342f340 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`2342f3a0 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`2342f3f0 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`2342f900 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`2342f930 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  46  Id: b7dc.61cc Suspend: 1 Teb: 00000035`1c43a000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`2383f038 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`2383f040 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`2383f0e0 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`2383f120 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`2383f150 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`2383f1e0 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`2383f2e0 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`2383f340 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`2383f390 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`2383f8e0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`2383f910 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  47  Id: b7dc.a4fc Suspend: 1 Teb: 00000035`1c43c000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`23c4f118 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`23c4f120 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`23c4f1c0 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`23c4f200 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`23c4f230 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`23c4f2c0 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`23c4f3c0 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`23c4f420 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`23c4f470 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`23c4fa00 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`23c4fa30 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  48  Id: b7dc.9fc4 Suspend: 1 Teb: 00000035`1c43e000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`2405f338 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`2405f340 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`2405f3e0 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`2405f420 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`2405f450 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`2405f4e0 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`2405f5e0 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`2405f640 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`2405f690 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`2405fc60 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`2405fc90 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  49  Id: b7dc.a9a0 Suspend: 1 Teb: 00000035`1c440000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`2446f5e8 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`2446f5f0 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`2446f690 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`2446f6d0 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`2446f700 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`2446f790 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`2446f890 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`2446f8f0 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`2446f940 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`2446ff50 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`2446ff80 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  50  Id: b7dc.8e5c Suspend: 1 Teb: 00000035`1c442000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`2487f1b8 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`2487f1c0 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`2487f260 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`2487f2a0 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`2487f2d0 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`2487f360 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`2487f460 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`2487f4c0 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`2487f510 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`2487fb60 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`2487fb90 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  51  Id: b7dc.8898 Suspend: 1 Teb: 00000035`1c444000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`24c8f118 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`24c8f120 00007ffb`244d39af     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`24c8f1c0 00007ffb`244d371a     libomp140_x86_64!__kmp_win32_cond_wait<kmp_flag_64<0,1> >+0x5f
+03 00000035`24c8f200 00007ffb`244aa4e4     libomp140_x86_64!__kmp_suspend_template<kmp_flag_64<0,1> >+0x12a
+04 00000035`24c8f230 00007ffb`244acadd     libomp140_x86_64!__kmp_wait_template<kmp_flag_oncore,1,0,1>+0x2f4
+05 00000035`24c8f2c0 00007ffb`244ab6fa     libomp140_x86_64!__kmp_hyper_barrier_release+0x11d
+06 00000035`24c8f3c0 00007ffb`2448d41c     libomp140_x86_64!__kmp_fork_barrier+0x1fa
+07 00000035`24c8f420 00007ffb`244d4ed5     libomp140_x86_64!_kmp_launch_thread+0x5c
+08 00000035`24c8f470 00007ffb`a3a6cd87     libomp140_x86_64!_kmp_launch_worker+0x195
+09 00000035`24c8fb00 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0a 00000035`24c8fb30 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  52  Id: b7dc.bd68 Suspend: 1 Teb: 00000035`1c446000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`20f9f7c8 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000035`20f9f7d0 00007ffb`35f4e26a     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000035`20f9f870 00007ffb`35e074d0     python312!PySet_Pop+0x122
+03 00000035`20f9f8a0 00007ffb`35e07445     python312!PyThread_acquire_lock_timed+0xdc
+04 00000035`20f9f8e0 00007ffb`35e06f35     python312!PyThread_acquire_lock_timed+0x51
+05 00000035`20f9f910 00007ffb`35e06605     python312!PyEval_EvalCode+0x485
+06 00000035`20f9f950 00007ffb`35e330e3     python312!Py_convert_optional_to_ssize_t+0x111
+07 00000035`20f9f980 00007ffb`35e51a5f     python312!PyErr_SetNone+0xdf
+08 00000035`20f9f9d0 00007ffb`35e519c5     python312!PyObject_Vectorcall+0xcf
+09 00000035`20f9fa50 00007ffb`35e52ea5     python312!PyObject_Vectorcall+0x35
+0a 00000035`20f9fa90 00007ffb`35e5103c     python312!PyEval_EvalFrameDefault+0x895
+0b 00000035`20f9fcc0 00007ffb`35e4be6c     python312!PyFunction_Vectorcall+0x17c
+0c 00000035`20f9fd20 00007ffb`35e82815     python312!PyArg_CheckPositional+0x4b0
+0d 00000035`20f9fde0 00007ffb`35e8275f     python312!PyObject_Call+0x125
+0e 00000035`20f9fe20 00007ffb`35df304c     python312!PyObject_Call+0x6f
+0f 00000035`20f9fe70 00007ffb`35df2ff2     python312!PyInterpreterState_Delete+0x500
+10 00000035`20f9fea0 00007ffb`a261cd30     python312!PyInterpreterState_Delete+0x4a6
+11 00000035`20f9fed0 00007ffb`a3a6cd87     ucrtbase!thread_start<unsigned int (__cdecl*)(void *),1>+0x30
+12 00000035`20f9ff00 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+13 00000035`20f9ff30 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  53  Id: b7dc.bab4 Suspend: 1 Teb: 00000035`1c450000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`24e7f848 00007ffb`a4ea298e     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000035`24e7f850 00007ffb`a2022a58     ntdll!RtlSleepConditionVariableSRW+0x1de
+02 00000035`24e7f8f0 00007ffa`f033d9a4     KERNELBASE!SleepConditionVariableSRW+0x38
+03 (Inline Function) --------`--------     amdhip64_7!_Primitive_wait_for+0x15
+04 (Inline Function) --------`--------     amdhip64_7!_Primitive_wait+0x15
+05 00000035`24e7f930 00007ffa`efb4840d     amdhip64_7!_Cnd_wait+0x28
+06 (Inline Function) --------`--------     amdhip64_7!std::condition_variable::wait+0x8
+07 (Inline Function) --------`--------     amdhip64_7!amd::Monitor::wait+0x14a
+08 00000035`24e7f960 00007ffa`efb48ae1     amdhip64_7!amd::HostQueue::loop+0x40d
+09 00000035`24e7fa30 00007ffa`efb72154     amdhip64_7!amd::HostQueue::Thread::run+0x31
+0a 00000035`24e7fa60 00007ffa`efaf590f     amdhip64_7!amd::Thread::main+0x2a4
+0b 00000035`24e7fad0 00007ffb`a3a6cd87     amdhip64_7!amd::Thread::entry+0xf
+0c 00000035`24e7fb00 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0d 00000035`24e7fb30 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  54  Id: b7dc.a644 Suspend: 1 Teb: 00000035`1c45a000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`2506f7e8 00007ffb`a4ea298e     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000035`2506f7f0 00007ffb`a2022a58     ntdll!RtlSleepConditionVariableSRW+0x1de
+02 00000035`2506f890 00007ffa`f033d9a4     KERNELBASE!SleepConditionVariableSRW+0x38
+03 (Inline Function) --------`--------     amdhip64_7!_Primitive_wait_for+0x15
+04 (Inline Function) --------`--------     amdhip64_7!_Primitive_wait+0x15
+05 00000035`2506f8d0 00007ffa`efb4840d     amdhip64_7!_Cnd_wait+0x28
+06 (Inline Function) --------`--------     amdhip64_7!std::condition_variable::wait+0x8
+07 (Inline Function) --------`--------     amdhip64_7!amd::Monitor::wait+0x14a
+08 00000035`2506f900 00007ffa`efb48ae1     amdhip64_7!amd::HostQueue::loop+0x40d
+09 00000035`2506f9d0 00007ffa`efb72154     amdhip64_7!amd::HostQueue::Thread::run+0x31
+0a 00000035`2506fa00 00007ffa`efaf590f     amdhip64_7!amd::Thread::main+0x2a4
+0b 00000035`2506fa70 00007ffb`a3a6cd87     amdhip64_7!amd::Thread::entry+0xf
+0c 00000035`2506faa0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0d 00000035`2506fad0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  55  Id: b7dc.b87c Suspend: 1 Teb: 00000035`1c45c000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`2525f048 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000035`2525f050 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000035`2525f340 00007ffa`eff80b04     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000035`2525f380 00007ffa`eff1c846     amdhip64_7!Pal::Wddm::Fence::WaitForFences+0x164
+04 00000035`2525f470 00007ffa`efc2456f     amdhip64_7!Pal::Device::WaitForFences+0x66
+05 00000035`2525f4b0 00007ffa`efc40aa5     amdhip64_7!amd::pal::VirtualGPU::Queue::waitForFence<0>+0x9f
+06 00000035`2525f4f0 00007ffa`efc408ea     amdhip64_7!amd::pal::VirtualGPU::Queue::waitForEvent+0x65
+07 (Inline Function) --------`--------     amdhip64_7!amd::pal::VirtualGPU::waitForEvent+0x25
+08 00000035`2525f520 00007ffa`efc308e1     amdhip64_7!amd::pal::VirtualGPU::waitEventLock+0x10a
+09 00000035`2525f570 00007ffa`efc3b3be     amdhip64_7!amd::pal::VirtualGPU::awaitCompletion+0x61
+0a 00000035`2525f5c0 00007ffa`efb487b0     amdhip64_7!amd::pal::VirtualGPU::submitMarker+0x8e
+0b 00000035`2525f610 00007ffa`efb48ae1     amdhip64_7!amd::HostQueue::loop+0x7b0
+0c 00000035`2525f6e0 00007ffa`efb72154     amdhip64_7!amd::HostQueue::Thread::run+0x31
+0d 00000035`2525f710 00007ffa`efaf590f     amdhip64_7!amd::Thread::main+0x2a4
+0e 00000035`2525f780 00007ffb`a3a6cd87     amdhip64_7!amd::Thread::entry+0xf
+0f 00000035`2525f7b0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+10 00000035`2525f7e0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  56  Id: b7dc.28c Suspend: 1 Teb: 00000035`1c45e000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`255ff7d8 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000035`255ff7e0 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000035`255ff870 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+*** WARNING: Unable to verify checksum for C:\tr\venv-hip\Lib\site-packages\zmq\backend\cython\_zmq.pyd
+03 00000035`255ffa30 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000035`255ffb90 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000035`2565fc30 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000035`2565fce0 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000035`2565fd10 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000035`2565fd40 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000035`2565fd70 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  57  Id: b7dc.a5f8 Suspend: 1 Teb: 00000035`1c460000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`259ff748 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000035`259ff750 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000035`259ff7e0 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+03 00000035`259ff9a0 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000035`259ffb00 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000035`25a5fba0 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000035`25a5fc50 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000035`25a5fc80 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000035`25a5fcb0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000035`25a5fce0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  58  Id: b7dc.c0c8 Suspend: 1 Teb: 00000035`1c462000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`25dff998 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000035`25dff9a0 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000035`25dffa30 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+03 00000035`25dffbf0 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000035`25dffd50 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000035`25e5fdf0 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000035`25e5fea0 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000035`25e5fed0 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000035`25e5ff00 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000035`25e5ff30 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  59  Id: b7dc.4634 Suspend: 1 Teb: 00000035`1c464000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000035`261ff458 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000035`261ff460 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000035`261ff4f0 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+03 00000035`261ff6b0 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000035`261ff810 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000035`2625f8b0 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000035`2625f960 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000035`2625f990 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000035`2625f9c0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000035`2625f9f0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'
+---- PID 45364 cdb ~*kn
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.016 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.8249 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\tr\b\core\clr\build\hipamd\src
+Deferred                                       srv*<symcache>*https://msdl.microsoft.com/download/symbols
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\tr\b\core\clr\build\hipamd\src
+Deferred                                       srv*<symcache>*https://msdl.microsoft.com/download/symbols
+Symbol search path is: C:\tr\b\core\clr\build\hipamd\src;srv*<symcache>*https://msdl.microsoft.com/download/symbols
+Executable search path is: 
+WARNING: Process 45364 is not attached as a debuggee
+         The process can be examined but debug events will not be received
+................................................................
+................................................................
+.....
+Loading unloaded module list
+........
+(b134.a5a0): Wake debugger - code 80000007 (first chance)
+
++------------------------------------------------------------------------+
+| This target supports Hardware-enforced Stack Protection. A HW based    |
+| "Shadow Stack" may be available to assist in debugging and analysis.   |
+| See aka.ms/userhsp for more info.                                      |
+|                                                                        |
+| dps @ssp                                                               |
+|                                                                        |
++------------------------------------------------------------------------+
+
+ntdll!NtWaitForSingleObject+0x14:
+00007ffb`a4f60e44 c3              ret
+0:000> cdb: Reading initial command '~*kn; q'
+
+.  0  Id: b134.a5a0 Suspend: 1 Teb: 00000054`a958f000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`a97ee9e8 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000054`a97ee9f0 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000054`a97eea80 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+*** WARNING: Unable to verify checksum for C:\tr\venv-hip\Lib\site-packages\zmq\backend\cython\_zmq.pyd
+03 00000054`a97eec40 00007ffa`ecd40874     WS2_32!select+0x201
+04 00000054`a97eeda0 00007ffa`ecd3740f     _zmq!PyInit__zmq+0x33914
+05 00000054`a97eee90 00007ffa`ecd31896     _zmq!PyInit__zmq+0x2a4af
+06 00000054`a97eeed0 00007ffa`ecd31cb0     _zmq!PyInit__zmq+0x24936
+07 00000054`a97eef40 00007ffa`ecd1e957     _zmq!PyInit__zmq+0x24d50
+08 00000054`a97eef80 00007ffa`ecd150b1     _zmq!PyInit__zmq+0x119f7
+09 00000054`a97eefb0 00007ffa`ecd12a3f     _zmq!PyInit__zmq+0x8151
+0a 00000054`a97ef090 00007ffa`ecd03bd9     _zmq!PyInit__zmq+0x5adf
+0b 00000054`a97ef140 00007ffa`ecd0e9da     _zmq+0x3bd9
+0c 00000054`a97ef240 00007ffb`35e51a5f     _zmq!PyInit__zmq+0x1a7a
+0d 00000054`a97ef270 00007ffb`35e519c5     python312!PyObject_Vectorcall+0xcf
+0e 00000054`a97ef2f0 00007ffb`35e52ea5     python312!PyObject_Vectorcall+0x35
+0f 00000054`a97ef330 00007ffb`35e081e4     python312!PyEval_EvalFrameDefault+0x895
+10 00000054`a97ef560 00007ffb`35e06b66     python312!PyObject_ClearManagedDict+0x384
+11 00000054`a97ef5a0 00007ffb`35ebe838     python312!PyEval_EvalCode+0xb6
+12 00000054`a97ef620 00007ffb`35ebea70     python312!Py_SourceAsString+0x90c
+13 00000054`a97ef650 00007ffb`35ebebdf     python312!PyModule_ClearDict+0x1fc
+14 00000054`a97ef6a0 00007ffb`35f58871     python312!PyRun_StringFlags+0x7b
+15 00000054`a97ef6f0 00007ffb`35f587ff     python312!PyRun_SimpleStringFlags+0x41
+16 00000054`a97ef730 00007ffb`35df8ee2     python312!PyThread_tss_set+0x303
+17 00000054`a97ef760 00007ffb`35df8700     python312!PyMem_GetAllocator+0x5c6
+18 00000054`a97ef7e0 00007ffb`35df86e3     python312!Py_RunMain+0x18
+19 00000054`a97ef810 00007ff7`54381230     python312!Py_Main+0x2b
+1a 00000054`a97ef860 00007ffb`a3a6cd87     python+0x1230
+1b 00000054`a97ef8a0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+1c 00000054`a97ef8d0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   1  Id: b134.99e8 Suspend: 1 Teb: 00000054`a9591000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`a99df858 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000054`a99df860 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000054`a99dfbc0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000054`a99dfbf0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   2  Id: b134.a0e4 Suspend: 1 Teb: 00000054`a9593000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`a9bcf418 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000054`a9bcf420 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000054`a9bcf780 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000054`a9bcf7b0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   3  Id: b134.be00 Suspend: 1 Teb: 00000054`a9595000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`a9dbfa68 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000054`a9dbfa70 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000054`a9dbfdd0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000054`a9dbfe00 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   4  Id: b134.6ab0 Suspend: 1 Teb: 00000054`a9599000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`aa19f378 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`aa19f380 00007ffb`a3c7feae     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 (Inline Function) --------`--------     combase!WaitCoalesced+0x79
+03 00000054`aa19f670 00007ffb`a3d557af     combase!CROIDTable::WorkerThreadLoop+0xae
+04 00000054`aa19f8e0 00007ffb`a3d556bf     combase!CRpcThread::WorkerLoop+0x5b
+05 00000054`aa19f950 00007ffb`a3a6cd87     combase!CRpcThreadCache::RpcWorkerThreadEntry+0x4f
+06 00000054`aa19f980 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+07 00000054`aa19f9b0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   5  Id: b134.559c Suspend: 1 Teb: 00000054`a959b000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`aa38f4b8 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000054`aa38f4c0 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000054`aa38f820 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000054`aa38f850 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   6  Id: b134.c1f8 Suspend: 1 Teb: 00000054`a959d000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`aa57fa68 00007ffb`a4e1a65e     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 00000054`aa57fa70 00007ffb`a3a6cd87     ntdll!TppWorkerThread+0x37e
+02 00000054`aa57fdd0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000054`aa57fe00 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+   7  Id: b134.b3d4 Suspend: 1 Teb: 00000054`a95a1000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`a9faf7e8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`a9faf7f0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`a9fafae0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`a9fafb20 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+   8  Id: b134.b9f4 Suspend: 1 Teb: 00000054`a95a3000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`aa76fb28 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`aa76fb30 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`aa76fe20 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`aa76fe60 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+   9  Id: b134.b9b0 Suspend: 1 Teb: 00000054`a95a5000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`aa95f738 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`aa95f740 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`aa95fa30 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`aa95fa70 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  10  Id: b134.90d4 Suspend: 1 Teb: 00000054`a95a7000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`aab4f5b8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`aab4f5c0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`aab4f8b0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`aab4f8f0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  11  Id: b134.6b1c Suspend: 1 Teb: 00000054`a95a9000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`aad3f678 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`aad3f680 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`aad3f970 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`aad3f9b0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  12  Id: b134.96d8 Suspend: 1 Teb: 00000054`a95ab000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`aaf2f3c8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`aaf2f3d0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`aaf2f6c0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`aaf2f700 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  13  Id: b134.3638 Suspend: 1 Teb: 00000054`a95ad000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ab11f668 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`ab11f670 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`ab11f960 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`ab11f9a0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  14  Id: b134.6bf8 Suspend: 1 Teb: 00000054`a95af000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ab30f988 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`ab30f990 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`ab30fc80 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`ab30fcc0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  15  Id: b134.921c Suspend: 1 Teb: 00000054`a95b1000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ab4ff5d8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`ab4ff5e0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`ab4ff8d0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`ab4ff910 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  16  Id: b134.ba0 Suspend: 1 Teb: 00000054`a95b3000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ab6ef9e8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`ab6ef9f0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`ab6efce0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`ab6efd20 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  17  Id: b134.9f68 Suspend: 1 Teb: 00000054`a95b5000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ab8df408 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`ab8df410 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`ab8df700 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`ab8df740 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  18  Id: b134.a698 Suspend: 1 Teb: 00000054`a95b7000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`abacfab8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`abacfac0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`abacfdb0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`abacfdf0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  19  Id: b134.c060 Suspend: 1 Teb: 00000054`a95b9000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`abcbfae8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`abcbfaf0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`abcbfde0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`abcbfe20 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  20  Id: b134.8408 Suspend: 1 Teb: 00000054`a95bb000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`abeaf6c8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`abeaf6d0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`abeaf9c0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`abeafa00 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  21  Id: b134.8b70 Suspend: 1 Teb: 00000054`a95bd000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ac09f808 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`ac09f810 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`ac09fb00 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`ac09fb40 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  22  Id: b134.bc30 Suspend: 1 Teb: 00000054`a95bf000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ac28f858 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`ac28f860 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`ac28fb50 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`ac28fb90 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  23  Id: b134.c170 Suspend: 1 Teb: 00000054`a95c1000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ac47fa58 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`ac47fa60 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`ac47fd50 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`ac47fd90 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  24  Id: b134.bbc8 Suspend: 1 Teb: 00000054`a95c3000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ac66fb88 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`ac66fb90 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`ac66fe80 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`ac66fec0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  25  Id: b134.aab4 Suspend: 1 Teb: 00000054`a95c5000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ac85f988 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`ac85f990 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`ac85fc80 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`ac85fcc0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  26  Id: b134.a1ec Suspend: 1 Teb: 00000054`a95c7000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`aca4f518 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`aca4f520 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`aca4f810 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`aca4f850 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  27  Id: b134.c1bc Suspend: 1 Teb: 00000054`a95c9000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`acc3f6f8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`acc3f700 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`acc3f9f0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`acc3fa30 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  28  Id: b134.5288 Suspend: 1 Teb: 00000054`a95cb000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ace2fa78 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`ace2fa80 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`ace2fd70 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`ace2fdb0 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  29  Id: b134.9f94 Suspend: 1 Teb: 00000054`a95cd000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ad01f9c8 00007ffb`a2022773     ntdll!NtWaitForMultipleObjects+0x14
+01 00000054`ad01f9d0 00007ffb`a2022641     KERNELBASE!WaitForMultipleObjectsEx+0x123
+02 00000054`ad01fcc0 00007ffa`6b297773     KERNELBASE!WaitForMultipleObjects+0x11
+03 00000054`ad01fd00 00000000`00000000     libscipy_openblas64__63c857e738469261263c764a36be9436!scipy_openblas_set_threads_callback_function64_+0x233
+
+  30  Id: b134.bb20 Suspend: 1 Teb: 00000054`a95cf000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ad3bf678 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000054`ad3bf680 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000054`ad3bf710 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+03 00000054`ad3bf8d0 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000054`ad3bfa30 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000054`ad41fad0 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000054`ad41fb80 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000054`ad41fbb0 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000054`ad41fbe0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000054`ad41fc10 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  31  Id: b134.c114 Suspend: 1 Teb: 00000054`a95d1000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ad7bf398 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000054`ad7bf3a0 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000054`ad7bf430 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+03 00000054`ad7bf5f0 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000054`ad7bf750 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000054`ad81f7f0 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000054`ad81f8a0 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000054`ad81f8d0 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000054`ad81f900 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000054`ad81f930 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  32  Id: b134.7234 Suspend: 1 Teb: 00000054`a95d3000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ada0fe18 00007ffb`a1246b1f     ntdll!NtRemoveIoCompletion+0x14
+01 00000054`ada0fe20 00007ffb`a3a6cd87     mswsock!SockAsyncThread+0xaf
+02 00000054`ada0fe80 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+03 00000054`ada0feb0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  33  Id: b134.a9d4 Suspend: 1 Teb: 00000054`a95d5000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`addaf818 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000054`addaf820 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000054`addaf8b0 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+03 00000054`addafa70 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000054`addafbd0 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000054`ade0fc70 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000054`ade0fd20 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000054`ade0fd50 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000054`ade0fd80 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000054`ade0fdb0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  34  Id: b134.bb1c Suspend: 1 Teb: 00000054`a95d7000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ae1af308 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000054`ae1af310 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000054`ae1af3a0 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+03 00000054`ae1af560 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000054`ae1af6c0 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000054`ae20f760 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000054`ae20f810 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000054`ae20f840 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000054`ae20f870 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000054`ae20f8a0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  35  Id: b134.8550 Suspend: 1 Teb: 00000054`a95d9000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ae5af338 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000054`ae5af340 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000054`ae5af3d0 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+03 00000054`ae5af590 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000054`ae5af6f0 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000054`ae60f790 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000054`ae60f840 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000054`ae60f870 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000054`ae60f8a0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000054`ae60f8d0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  36  Id: b134.1e9c Suspend: 1 Teb: 00000054`a95db000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`ae9af328 00007ffb`a123951a     ntdll!NtWaitForSingleObject+0x14
+01 00000054`ae9af330 00007ffb`a12391f2     mswsock!SockWaitForSingleObject+0x15a
+02 00000054`ae9af3c0 00007ffb`a3b219b1     mswsock!WSPSelect+0xa12
+03 00000054`ae9af580 00007ffa`ecd3ae70     WS2_32!select+0x201
+04 00000054`ae9af6e0 00007ffa`ecd3a981     _zmq!PyInit__zmq+0x2df10
+05 00000054`aea0f780 00007ffa`ecd349e7     _zmq!PyInit__zmq+0x2da21
+06 00000054`aea0f830 00007ffa`ecd98a4b     _zmq!PyInit__zmq+0x27a87
+07 00000054`aea0f860 00007ffb`a3a6cd87     _zmq!PyInit__zmq+0x8baeb
+08 00000054`aea0f890 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+09 00000054`aea0f8c0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  37  Id: b134.71f4 Suspend: 1 Teb: 00000054`a95dd000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`aebff798 00007ffb`a201be9f     ntdll!NtWaitForSingleObject+0x14
+01 00000054`aebff7a0 00007ffb`35f4e26a     KERNELBASE!WaitForSingleObjectEx+0xaf
+02 00000054`aebff840 00007ffb`35e074d0     python312!PySet_Pop+0x122
+03 00000054`aebff870 00007ffb`35e07445     python312!PyThread_acquire_lock_timed+0xdc
+04 00000054`aebff8b0 00007ffb`35e06f35     python312!PyThread_acquire_lock_timed+0x51
+05 00000054`aebff8e0 00007ffb`35e06605     python312!PyEval_EvalCode+0x485
+06 00000054`aebff920 00007ffb`35e330e3     python312!Py_convert_optional_to_ssize_t+0x111
+07 00000054`aebff950 00007ffb`35e51a5f     python312!PyErr_SetNone+0xdf
+08 00000054`aebff9a0 00007ffb`35e519c5     python312!PyObject_Vectorcall+0xcf
+09 00000054`aebffa20 00007ffb`35e52ea5     python312!PyObject_Vectorcall+0x35
+0a 00000054`aebffa60 00007ffb`35e5103c     python312!PyEval_EvalFrameDefault+0x895
+0b 00000054`aebffc90 00007ffb`35e4be6c     python312!PyFunction_Vectorcall+0x17c
+0c 00000054`aebffcf0 00007ffb`35e82815     python312!PyArg_CheckPositional+0x4b0
+0d 00000054`aebffdb0 00007ffb`35e8275f     python312!PyObject_Call+0x125
+0e 00000054`aebffdf0 00007ffb`35df304c     python312!PyObject_Call+0x6f
+0f 00000054`aebffe40 00007ffb`35df2ff2     python312!PyInterpreterState_Delete+0x500
+10 00000054`aebffe70 00007ffb`a261cd30     python312!PyInterpreterState_Delete+0x4a6
+11 00000054`aebffea0 00007ffb`a3a6cd87     ucrtbase!thread_start<unsigned int (__cdecl*)(void *),1>+0x30
+12 00000054`aebffed0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+13 00000054`aebfff00 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  38  Id: b134.bc2c Suspend: 1 Teb: 00000054`a95df000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`aedff3c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`aedff3d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+*** WARNING: Unable to verify checksum for C:\tr\venv-hip\Lib\site-packages\tokenizers\tokenizers.pyd
+02 00000054`aedff440 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`aedff480 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`aedff4d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`aedff570 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`aedff600 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`aedff880 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`aedff910 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`aedffb30 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`aedffbe0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`aedffc10 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  39  Id: b134.7bb4 Suspend: 1 Teb: 00000054`a95e1000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`aeffefc8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`aeffefd0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`aefff040 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`aefff080 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`aefff0d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`aefff170 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`aefff200 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`aefff4d0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`aefff560 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`aefff780 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`aefff830 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`aefff860 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  40  Id: b134.4480 Suspend: 1 Teb: 00000054`a95e3000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`af1ff2c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`af1ff2d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`af1ff340 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`af1ff380 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`af1ff3d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`af1ff470 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`af1ff500 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`af1ff7b0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`af1ff840 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`af1ffa60 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`af1ffb10 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`af1ffb40 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  41  Id: b134.bf94 Suspend: 1 Teb: 00000054`a95e5000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`af3ff148 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`af3ff150 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`af3ff1c0 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`af3ff200 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`af3ff250 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`af3ff2f0 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`af3ff380 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`af3ff620 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`af3ff6b0 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`af3ff8d0 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`af3ff980 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`af3ff9b0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  42  Id: b134.ba38 Suspend: 1 Teb: 00000054`a95e7000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`af5ff2c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`af5ff2d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`af5ff340 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`af5ff380 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`af5ff3d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`af5ff470 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`af5ff500 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`af5ff7f0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`af5ff880 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`af5ffaa0 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`af5ffb50 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`af5ffb80 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  43  Id: b134.1c44 Suspend: 1 Teb: 00000054`a95e9000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`af7fefc8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`af7fefd0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`af7ff040 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`af7ff080 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`af7ff0d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`af7ff170 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`af7ff200 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`af7ff4b0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`af7ff540 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`af7ff760 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`af7ff810 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`af7ff840 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  44  Id: b134.519c Suspend: 1 Teb: 00000054`a95eb000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`af9ff148 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`af9ff150 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`af9ff1c0 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`af9ff200 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`af9ff250 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`af9ff2f0 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`af9ff380 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`af9ff610 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`af9ff6a0 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`af9ff8c0 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`af9ff970 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`af9ff9a0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  45  Id: b134.9244 Suspend: 1 Teb: 00000054`a95ed000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`afbfefc8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`afbfefd0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`afbff040 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`afbff080 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`afbff0d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`afbff170 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`afbff200 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`afbff4d0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`afbff560 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`afbff780 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`afbff830 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`afbff860 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  46  Id: b134.c080 Suspend: 1 Teb: 00000054`a95ef000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`afdff4c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`afdff4d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`afdff540 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`afdff580 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`afdff5d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`afdff670 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`afdff700 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`afdff9d0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`afdffa60 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`afdffc80 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`afdffd30 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`afdffd60 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  47  Id: b134.a180 Suspend: 1 Teb: 00000054`a95f1000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`affff448 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`affff450 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`affff4c0 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`affff500 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`affff550 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`affff5f0 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`affff680 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`affff910 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`affff9a0 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`affffbc0 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`affffc70 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`affffca0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  48  Id: b134.7e54 Suspend: 1 Teb: 00000054`a95f3000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b01ff5c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b01ff5d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b01ff640 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b01ff680 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b01ff6d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b01ff770 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b01ff800 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b01ffaa0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b01ffb30 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b01ffd50 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b01ffe00 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b01ffe30 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  49  Id: b134.abe8 Suspend: 1 Teb: 00000054`a95f5000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b03ff048 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b03ff050 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b03ff0c0 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b03ff100 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b03ff150 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b03ff1f0 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b03ff280 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b03ff560 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b03ff5f0 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b03ff810 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b03ff8c0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b03ff8f0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  50  Id: b134.7b28 Suspend: 1 Teb: 00000054`a95f7000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b05ff348 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b05ff350 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b05ff3c0 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b05ff400 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b05ff450 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b05ff4f0 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b05ff580 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b05ff820 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b05ff8b0 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b05ffad0 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b05ffb80 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b05ffbb0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  51  Id: b134.8560 Suspend: 1 Teb: 00000054`a95f9000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b07ff1c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b07ff1d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b07ff240 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b07ff280 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b07ff2d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b07ff370 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b07ff400 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b07ff6c0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b07ff750 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b07ff970 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b07ffa20 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b07ffa50 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  52  Id: b134.79f0 Suspend: 1 Teb: 00000054`a95fb000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b09ff3c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b09ff3d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b09ff440 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b09ff480 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b09ff4d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b09ff570 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b09ff600 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b09ff8a0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b09ff930 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b09ffb50 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b09ffc00 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b09ffc30 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  53  Id: b134.b9bc Suspend: 1 Teb: 00000054`a95fd000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b0bff2c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b0bff2d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b0bff340 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b0bff380 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b0bff3d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b0bff470 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b0bff500 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b0bff7c0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b0bff850 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b0bffa70 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b0bffb20 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b0bffb50 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  54  Id: b134.9148 Suspend: 1 Teb: 00000054`a9400000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b0dff448 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b0dff450 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b0dff4c0 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b0dff500 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b0dff550 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b0dff5f0 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b0dff680 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b0dff950 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b0dff9e0 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b0dffc00 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b0dffcb0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b0dffce0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  55  Id: b134.a4c Suspend: 1 Teb: 00000054`a9402000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b0fff3c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b0fff3d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b0fff440 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b0fff480 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b0fff4d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b0fff570 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b0fff600 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b0fff8f0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b0fff980 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b0fffba0 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b0fffc50 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b0fffc80 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  56  Id: b134.a680 Suspend: 1 Teb: 00000054`a9404000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b11ff748 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b11ff750 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b11ff7c0 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b11ff800 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b11ff850 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b11ff8f0 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b11ff980 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b11ffc00 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b11ffc90 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b11ffeb0 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b11fff60 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b11fff90 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  57  Id: b134.b340 Suspend: 1 Teb: 00000054`a9406000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b13ff0c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b13ff0d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b13ff140 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b13ff180 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b13ff1d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b13ff270 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b13ff300 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b13ff5c0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b13ff650 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b13ff870 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b13ff920 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b13ff950 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  58  Id: b134.acf8 Suspend: 1 Teb: 00000054`a9408000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b15ff2c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b15ff2d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b15ff340 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b15ff380 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b15ff3d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b15ff470 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b15ff500 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b15ff7f0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b15ff880 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b15ffaa0 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b15ffb50 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b15ffb80 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  59  Id: b134.b0cc Suspend: 1 Teb: 00000054`a940a000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b17ff348 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b17ff350 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b17ff3c0 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b17ff400 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b17ff450 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b17ff4f0 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b17ff580 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b17ff800 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b17ff890 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b17ffab0 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b17ffb60 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b17ffb90 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  60  Id: b134.9104 Suspend: 1 Teb: 00000054`a940c000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b19ff6c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b19ff6d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b19ff740 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b19ff780 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b19ff7d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b19ff870 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b19ff900 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b19ffbc0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b19ffc50 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b19ffe70 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b19fff20 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b19fff50 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  61  Id: b134.99e0 Suspend: 1 Teb: 00000054`a940e000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b1bff6c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b1bff6d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b1bff740 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b1bff780 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b1bff7d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b1bff870 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b1bff900 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b1bffbd0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b1bffc60 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b1bffe80 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b1bfff30 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b1bfff60 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  62  Id: b134.5a54 Suspend: 1 Teb: 00000054`a9410000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b1dff348 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b1dff350 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b1dff3c0 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b1dff400 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b1dff450 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b1dff4f0 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b1dff580 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b1dff830 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b1dff8c0 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b1dffae0 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b1dffb90 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b1dffbc0 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  63  Id: b134.c2e0 Suspend: 1 Teb: 00000054`a9412000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b1fff5c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b1fff5d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b1fff640 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b1fff680 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b1fff6d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b1fff770 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b1fff800 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b1fffaa0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b1fffb30 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b1fffd50 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b1fffe00 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b1fffe30 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  64  Id: b134.8da0 Suspend: 1 Teb: 00000054`a9414000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b21ff3c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b21ff3d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b21ff440 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b21ff480 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b21ff4d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b21ff570 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b21ff600 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b21ff8e0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b21ff970 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b21ffb90 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b21ffc40 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b21ffc70 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  65  Id: b134.baa8 Suspend: 1 Teb: 00000054`a9416000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b23ff2c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b23ff2d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b23ff340 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b23ff380 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b23ff3d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b23ff470 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b23ff500 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b23ff7b0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b23ff840 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b23ffa60 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b23ffb10 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b23ffb40 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  66  Id: b134.41dc Suspend: 1 Teb: 00000054`a9418000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b25ff1c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b25ff1d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b25ff240 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b25ff280 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b25ff2d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b25ff370 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b25ff400 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b25ff6a0 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b25ff730 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b25ff950 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b25ffa00 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b25ffa30 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  67  Id: b134.c124 Suspend: 1 Teb: 00000054`a941a000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b27ff648 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b27ff650 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b27ff6c0 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b27ff700 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b27ff750 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b27ff7f0 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b27ff880 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b27ffb00 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b27ffb90 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b27ffdb0 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b27ffe60 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b27ffe90 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  68  Id: b134.bb38 Suspend: 1 Teb: 00000054`a941c000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b29ff248 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b29ff250 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b29ff2c0 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b29ff300 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b29ff350 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b29ff3f0 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b29ff480 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b29ff700 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b29ff790 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b29ff9b0 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b29ffa60 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b29ffa90 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+
+  69  Id: b134.9c1c Suspend: 1 Teb: 00000054`a941e000 Unfrozen
+ # Child-SP          RetAddr               Call Site
+00 00000054`b2bff1c8 00007ffb`a4e98273     ntdll!NtWaitForAlertByThreadId+0x14
+01 00000054`b2bff1d0 00007ffb`a20de298     ntdll!RtlWaitOnAddress+0x213
+02 00000054`b2bff240 00007ffa`65093163     KERNELBASE!WaitOnAddress+0x38
+03 00000054`b2bff280 00007ffa`650fe11b     tokenizers!onig_get_start_by_callout_args+0x9b603
+04 00000054`b2bff2d0 00007ffa`650fdd63     tokenizers!onigenc_strlen_null+0x21dbb
+05 00000054`b2bff370 00007ffa`65087f66     tokenizers!onigenc_strlen_null+0x21a03
+06 00000054`b2bff400 00007ffa`650893f2     tokenizers!onig_get_start_by_callout_args+0x90406
+07 00000054`b2bff690 00007ffa`65089d61     tokenizers!onig_get_start_by_callout_args+0x91892
+08 00000054`b2bff720 00007ffa`6509b243     tokenizers!onig_get_start_by_callout_args+0x92201
+09 00000054`b2bff940 00007ffb`a3a6cd87     tokenizers!onig_get_start_by_callout_args+0xa36e3
+0a 00000054`b2bff9f0 00007ffb`a4eacaec     KERNEL32!BaseThreadInitThunk+0x17
+0b 00000054`b2bffa20 00000000`00000000     ntdll!RtlUserThreadStart+0x2c
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'
+== second pass pid 47068: ~55s; .echo ==FRAME 2; .frame /c 2; dv /t /v; r; dq @rsp L20; .echo ==FRAME 3; .frame /c 3; dv /t /v; r; dq @rsp L20; .echo ==FRAME 4; .frame /c 4; dv /t /v; r; dq @rsp L20; .echo ==FRAME 5; .frame /c 5; dv /t /v; r; dq @rsp L20; .echo ==FRAME 6; .frame /c 6; dv /t /v; r; dq @rsp L20; .echo ==FRAME 7; .frame /c 7; dv /t /v; r; dq @rsp L20; .echo ==FRAME 8; .frame /c 8; dv /t /v; r; dq @rsp L20; .echo ==FRAME 9; .frame /c 9; dv /t /v; r; dq @rsp L20; q
+== third pass Queue*=0x000001db8d134c10
